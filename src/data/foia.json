@@ -2,10 +2,16 @@
   {
     "id": "1",
     "title": {
-      "en": "Glacier Cooling Systems Study"
+      "en": "Glacier Cooling Systems Study",
+      "de": "Gletscherkühlsystem-Studie",
+      "fr": "Étude des systèmes de refroidissement des glaciers",
+      "it": "Studio sui sistemi di raffreddamento dei ghiacciai"
     },
     "summary": {
-      "en": "Analysis of passive and active glacier cooling measures."
+      "en": "Analysis of passive and active glacier cooling measures.",
+      "de": "Analyse passiver und aktiver Gletscherkühlungsmaßnahmen.",
+      "fr": "Analyse des mesures de refroidissement passives et actives des glaciers.",
+      "it": "Analisi delle misure di raffreddamento passive e attive dei ghiacciai."
     },
     "request_text": "Please provide documentation on all glacier cooling research funded in the last 5 years.",
     "response_text": "Attached is the funding report and research data.",
@@ -13,5 +19,26 @@
     "response_pdf": "foia1_response.pdf",
     "latitude": 46.8,
     "longitude": 8.3
+  },
+  {
+    "id": "2",
+    "title": {
+      "en": "High-Altitude Solar Projects",
+      "de": "Hochalpine Solarprojekte",
+      "fr": "Projets solaires en haute altitude",
+      "it": "Progetti solari ad alta quota"
+    },
+    "summary": {
+      "en": "Requesting documents on environmental assessments for alpine solar installations.",
+      "de": "Anfrage nach Umweltprüfungen für alpine Solaranlagen.",
+      "fr": "Demande de documents concernant les évaluations environnementales pour les installations solaires alpines.",
+      "it": "Richiesta di documenti sulle valutazioni ambientali per gli impianti solari alpini."
+    },
+    "request_text": "Please provide all environmental impact assessments, planning documents and public consultations related to high-altitude photovoltaic projects since 2023.",
+    "response_text": "Enclosed you will find the impact assessment summary and public comments (data anonymised).",
+    "request_pdf": "foia2_request.pdf",
+    "response_pdf": "foia2_response.pdf",
+    "latitude": 46.5,
+    "longitude": 7.9
   }
 ]

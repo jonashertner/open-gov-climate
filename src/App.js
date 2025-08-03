@@ -30,6 +30,8 @@ function App() {
           }}
         >
           <Routes>
+
+            {/* Home */}
             <Route
               path="/"
               element={
@@ -43,10 +45,18 @@ function App() {
                 </main>
               }
             />
+
+            {/* FOIA listing & detail */}
+            <Route
+              path="/foia"
+              element={<FOIAList lang={lang} />}
+            />
             <Route
               path="/foia/:id"
               element={<FOIADetail lang={lang} />}
             />
+
+            {/* Articles listing & detail */}
             <Route
               path="/articles"
               element={<Articles lang={lang} />}
@@ -55,6 +65,7 @@ function App() {
               path="/articles/:id"
               element={<ArticleDetail lang={lang} />}
             />
+
           </Routes>
           <Footer />
         </div>

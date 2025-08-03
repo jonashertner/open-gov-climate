@@ -1,4 +1,3 @@
-// src/components/FOIADetail.js
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useT } from '../i18n';
@@ -13,8 +12,8 @@ export default function FOIADetail({ lang }) {
   if (!entry) {
     return (
       <section className="container">
-        <p>{t.errors?.notFound || 'Request not found.'}</p>
-        <Link to="/">{t.buttons?.backToHome || '← Back home'}</Link>
+        <p>{t.errors.notFound}</p>
+        <Link to="/foia">{t.buttons.backToList}</Link>
       </section>
     );
   }
@@ -23,7 +22,7 @@ export default function FOIADetail({ lang }) {
     <section className="container">
       <h2>{entry.title[lang]}</h2>
 
-      <h3>{t.headings?.request || 'Request'}</h3>
+      <h3>{t.headings.request}</h3>
       <p>{entry.request_text}</p>
       {entry.request_pdf && (
         <p>
@@ -32,12 +31,12 @@ export default function FOIADetail({ lang }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t.headings?.downloadRequest || 'Download Request PDF'}
+            {t.buttons.downloadRequest}
           </a>
         </p>
       )}
 
-      <h3>{t.headings?.response || 'Response'}</h3>
+      <h3>{t.headings.response}</h3>
       <p>{entry.response_text}</p>
       {entry.response_pdf && (
         <p>
@@ -46,13 +45,13 @@ export default function FOIADetail({ lang }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t.headings?.downloadResponse || 'Download Response PDF'}
+            {t.buttons.downloadResponse}
           </a>
         </p>
       )}
 
       <p>
-        <Link to="/">{t.buttons?.backToList || '← Back to Requests'}</Link>
+        <Link to="/foia">{t.buttons.backToList}</Link>
       </p>
     </section>
   );

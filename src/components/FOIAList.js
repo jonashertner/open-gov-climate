@@ -17,7 +17,9 @@ export default function FOIAList({ lang }) {
               <Link to={`/foia/${e.id}`}>{e.title[lang]}</Link>
             </h3>
             <p>{e.summary[lang]}</p>
-            <Link to={`/foia/${e.id}`}>{t.headings.readMore || 'Read full request'}</Link>
+            <Link to={`/foia/${e.id}`}>
+              {t.headings.readMore}
+            </Link>
           </li>
         ))}
       </ul>
