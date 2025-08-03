@@ -16,28 +16,29 @@ import { I18nProvider } from './i18n';
 
 function App() {
   const [lang, setLang] = useState('en');
-  // This resolves to: /open-gov-climate/relief_switzerland_minimalist.png
   const bgUrl = process.env.PUBLIC_URL + '/relief_switzerland_minimalist.png';
 
   return (
     <I18nProvider lang={lang}>
       <Router>
-        <div
+        {/* Background image as an <img> with low opacity, fixed behind everything */}
+        <img
+          src={bgUrl}
+          alt=""
           style={{
-            // Relief map behind, fixed
-            backgroundImage: `url(${bgUrl})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
-
-            // White overlay to mute the image
-            backgroundColor: 'rgba(255,255,255,0.85)',
-
-            // Ensure full-screen coverage
-            minHeight: '100vh',
+            position: 'fixed',
+            top: 0,
+            left: 0,
             width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.08,
+            zIndex: -1
           }}
-        >
+        />
+
+        {/* All your content lives on top */}
+        <div style={{ position: 'relative', minHeight: '100vh', width: '100%' }}>
           <Header lang={lang} setLang={setLang} />
 
           <main>
