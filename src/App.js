@@ -12,21 +12,32 @@ import { I18nProvider } from './i18n';
 
 function App() {
   const [lang, setLang] = useState('en');
+  const bgUrl = process.env.PUBLIC_URL + '/relief_switzerland_minimalist.png';
+
   return (
-    <I18nProvider lang={lang}>
-      <Router>
-        <Header lang={lang} setLang={setLang} />
-        <main>
-          <Intro />
-          <Disclosures />
-          <FOIAList />
-          <MapSection />
-          <Articles />
-          <Contact />
-        </main>
-        <Footer />
-      </Router>
-    </I18nProvider>
+    <div
+      style={{
+        backgroundImage: `url(${bgUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      <I18nProvider lang={lang}>
+        <Router>
+          <Header lang={lang} setLang={setLang} />
+          <main>
+            <Intro />
+            <Disclosures />
+            <FOIAList />
+            <MapSection />
+            <Articles />
+            <Contact />
+          </main>
+          <Footer />
+        </Router>
+      </I18nProvider>
+    </div>
   );
 }
 
