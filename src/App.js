@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Banner from './components/Banner';
 import Intro from './components/Intro';
 import Disclosures from './components/Disclosures';
 import FOIAList from './components/FOIAList';
@@ -20,7 +19,6 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <Banner />
               <Intro />
               <Disclosures />
               <FOIAList />

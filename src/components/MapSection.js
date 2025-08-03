@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import FOIA_DATA from '../data/foia.json';
+import { useT } from '../i18n';
 import '../styles/global.css';
 
 export default function MapSection() {
+  const t = useT();
   const ref = useRef();
   const mapRef = useRef();
   useEffect(() => {
@@ -18,7 +20,9 @@ export default function MapSection() {
       if (e.latitude && e.longitude) {
         new maplibregl.Marker()
           .setLngLat([e.longitude, e.latitude])
-          .setPopup(new maplibregl.Popup().setText(e.title.en))
+          .setPopup(new maplibregl.Popup().setHTML(
+            `<a href="#foia-${e.id}">${e.title.en}</a>`
+          ))
           .addTo(mapRef.current);
       }
     });
@@ -26,7 +30,7 @@ export default function MapSection() {
   }, []);
   return (
     <section className="container">
-      <h2>Geographic Coverage</h2>
+      <h2>{t.headings.map}</h2>
       <div ref={ref} className="map-container"></div>
     </section>
   );
