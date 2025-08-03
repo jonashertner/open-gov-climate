@@ -8,6 +8,7 @@ export default function Intro() {
     <section className="container">
       <h2>{t.intro.title}</h2>
       <p>{t.intro.text}</p>
+      <p>{t.about}</p>
     </section>
   );
 }

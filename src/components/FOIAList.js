@@ -36,7 +36,7 @@ export default function FOIAList() {
         const req = entry.request_text? entry.request_text.slice(0,150):''; 
         const res = entry.response_text? entry.response_text.slice(0,150):'';
         return (
-          <article key={entry.id} style={{marginBottom:'24px'}}>
+          <article id={`foia-${entry.id}`} key={entry.id} style={{marginBottom:'24px'}}>
             <h3>{entry.title.en}</h3>
             <p><strong>Request:</strong> {req}{entry.request_text.length>150?'…':''}</p>
             {entry.request_pdf && <a href={`/data/${entry.request_pdf}`} target="_blank" rel="noopener">Download PDF</a>}

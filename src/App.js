@@ -7,7 +7,6 @@ import Disclosures from './components/Disclosures';
 import FOIAList from './components/FOIAList';
 import MapSection from './components/MapSection';
 import Articles from './components/Articles';
-import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { I18nProvider } from './i18n';
@@ -26,7 +25,6 @@ function App() {
               <Disclosures />
               <FOIAList />
               <MapSection />
-              <About />
               <Contact />
             </>
           }/>
