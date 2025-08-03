@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header';
 import Intro from './components/Intro';
 import Disclosures from './components/Disclosures';
@@ -31,12 +32,27 @@ function App() {
           <Header lang={lang} setLang={setLang} />
 
           <main>
-            <Intro />
-            <Disclosures lang={lang} />
-            <FOIAList lang={lang} />
-            <MapSection />
-            <Articles lang={lang} />
-            <Contact />
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Intro />
+                  <Disclosures lang={lang} />
+                  <FOIAList lang={lang} />
+                  <MapSection />
+                  <Articles lang={lang} />
+                  <Contact />
+                </>
+              }/>
+
+              <Route path="/foia" element={<FOIAList lang={lang} />} />
+              <Route path="/foia/:id" element={<FOIADetail lang={lang} />} />
+
+              <Route path="/articles" element={<Articles lang={lang} />} />
+              <Route path="/articles/:id" element={<ArticleDetail lang={lang} />} />
+
+              {/* fallback to home */}
+              <Route path="*" element={<Intro />} />
+            </Routes>
           </main>
 
           <Footer />
