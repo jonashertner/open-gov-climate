@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useT } from '../i18n';
 import '../styles/global.css';
 
 const languages = [
@@ -10,14 +11,13 @@ const languages = [
 ];
 
 export default function Header({ lang, setLang }) {
+  const t = useT();
+
   return (
     <header style={{ padding: '16px 0', textAlign: 'center' }}>
       <h1 style={{ margin: 0, fontSize: '1.5rem', fontFamily: 'Aktiv Grotesk, Helvetica, Arial, sans-serif' }}>
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          {/* Use the translated siteTitle */}
-          {lang === 'de' || lang === 'fr' || lang === 'it'
-            ? 'Open Gov Climate Initiative'
-            : 'Open Gov Climate Initiative'}
+          {t.siteTitle}
         </Link>
       </h1>
       <div style={{ marginTop: '8px', display: 'inline-flex', gap: '8px' }}>

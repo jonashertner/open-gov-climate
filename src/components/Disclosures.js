@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function Disclosures({ lang }) {
   const t = useT();
+
   return (
     <section className="container">
       <h2 style={{ fontFamily: 'Aktiv Grotesk, Helvetica, Arial, sans-serif' }}>
@@ -14,20 +15,28 @@ export default function Disclosures({ lang }) {
       </h2>
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {FOIA_DATA.map(e => (
-          <li key={e.id} style={{ marginBottom: '0.75rem' }}>
+          <li key={`foia-${e.id}`} style={{ marginBottom: '0.75rem' }}>
             <Link
               to={`/foia/${e.id}`}
-              style={{ textDecoration: 'none', color: 'inherit', fontFamily: 'Aktiv Grotesk, Helvetica, Arial, sans-serif' }}
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+                fontFamily: 'Aktiv Grotesk, Helvetica, Arial, sans-serif'
+              }}
             >
               {e.title[lang]}
             </Link>
           </li>
         ))}
         {ARTICLES.map(a => (
-          <li key={a.id} style={{ marginBottom: '0.75rem' }}>
+          <li key={`article-${a.id}`} style={{ marginBottom: '0.75rem' }}>
             <Link
               to={`/articles/${a.id}`}
-              style={{ textDecoration: 'none', color: 'inherit', fontFamily: 'Aktiv Grotesk, Helvetica, Arial, sans-serif' }}
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+                fontFamily: 'Aktiv Grotesk, Helvetica, Arial, sans-serif'
+              }}
             >
               {a.title[lang]}
             </Link>

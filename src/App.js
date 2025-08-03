@@ -19,7 +19,6 @@ function App() {
   return (
     <I18nProvider lang={lang}>
       <Router>
-        <Header lang={lang} setLang={setLang} />
         <div
           style={{
             backgroundImage: `url(${bgUrl})`,
@@ -29,44 +28,17 @@ function App() {
             minHeight: '100vh'
           }}
         >
-          <Routes>
+          <Header lang={lang} setLang={setLang} />
 
-            {/* Home */}
-            <Route
-              path="/"
-              element={
-                <main>
-                  <Intro />
-                  <Disclosures />
-                  <FOIAList lang={lang} />
-                  <MapSection />
-                  <Articles lang={lang} />
-                  <Contact />
-                </main>
-              }
-            />
+          <main>
+            <Intro />
+            <Disclosures lang={lang} />
+            <FOIAList lang={lang} />
+            <MapSection />
+            <Articles lang={lang} />
+            <Contact />
+          </main>
 
-            {/* FOIA listing & detail */}
-            <Route
-              path="/foia"
-              element={<FOIAList lang={lang} />}
-            />
-            <Route
-              path="/foia/:id"
-              element={<FOIADetail lang={lang} />}
-            />
-
-            {/* Articles listing & detail */}
-            <Route
-              path="/articles"
-              element={<Articles lang={lang} />}
-            />
-            <Route
-              path="/articles/:id"
-              element={<ArticleDetail lang={lang} />}
-            />
-
-          </Routes>
           <Footer />
         </div>
       </Router>
