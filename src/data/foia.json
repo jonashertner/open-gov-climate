@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "title": { "en":"Request about temperature increase","de":"Anfrage zur Temperaturerhöhung","fr":"Demande sur l'augmentation de la température","it":"Richiesta sull'aumento della temperatura" },
+    "summary": { "en":"This request asks for internal documents showing how average temperatures in the Alps have changed over recent decades.","de":"Diese Anfrage bittet um interne Dokumente ...","fr":"Cette demande sollicite des documents internes ...","it":"Questa richiesta chiede documenti interni ..." },
+    "request_text":"Sehr geehrte Damen und Herren,\n\nBitte übermitteln Sie ...",
+    "response_text":"Sehr geehrte/r Anfragende/r,\n\nHiermit übersenden wir ...",
+    "request_pdf":"files/request1.pdf","response_pdf":"files/response1.pdf",
+    "latitude":46.94797,"longitude":7.44455
+  }
+]

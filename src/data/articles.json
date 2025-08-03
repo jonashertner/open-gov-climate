@@ -1,0 +1,8 @@
+[
+  {
+    "id":"1",
+    "title":{ "en":"The Alps are warming faster – what does it mean?","de":"Die Alpen erwärmen sich schneller – was bedeutet das?","fr":"Les Alpes se réchauffent plus vite : quelles conséquences ?","it":"Le Alpi si riscaldano più velocemente – cosa significa?" },
+    "summary":{ "en":"An overview of why temperature rise in the Alps is more severe than the global average.","de":"Ein Überblick darüber ...","fr":"Un aperçu des raisons ...","it":"Una panoramica sul perché ..." },
+    "url":"https://example.com/alps-warming"
+  }
+]
