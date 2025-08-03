@@ -1,0 +1,5 @@
+:root {
+  --font-base: 16px;
+  --color-text: #222;
+}
+body { margin:0; font-family:sans-serif; }
