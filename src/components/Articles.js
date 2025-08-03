@@ -12,6 +12,10 @@ export default function Articles() {
         <article id={`article-${a.id}`} key={a.id}>
           <h3>{a.title.en}</h3>
           <p>{a.summary.en}</p>
+          <div
+            className="article-content"
+            dangerouslySetInnerHTML={{ __html: a.content[lang] }}
+          />  
         </article>
       ))}
     </section>

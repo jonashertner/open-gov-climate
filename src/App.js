@@ -3,6 +3,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
 import Intro from './components/Intro';
 import Disclosures from './components/Disclosures';
+import FeaturedArticles from './components/FeaturedArticles';
 import FOIAList from './components/FOIAList';
 import MapSection from './components/MapSection';
 import Articles from './components/Articles';
@@ -23,6 +24,7 @@ function App() {
             <Disclosures />
             <FOIAList />
             <MapSection />
+            <FeaturedArticles />
             <Articles />
             <Contact />
           </main>
