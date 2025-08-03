@@ -11,9 +11,18 @@
       "map": "Geographic Coverage",
       "contact": "Contact",
       "readMore": "Read more",
-      "notFound": "Article not found.",
-      "backToList": "← Back to Articles",
+      "request": "Request",
+      "response": "Response",
       "footer": "Made with ❤️ by Open Gov Climate"
+    },
+    "buttons": {
+      "backToHome": "← Back home",
+      "backToList": "← Back to Requests",
+      "downloadRequest": "Download Request PDF",
+      "downloadResponse": "Download Response PDF"
+    },
+    "errors": {
+      "notFound": "Item not found."
     }
   },
   "de": {
@@ -27,12 +36,19 @@
       "articles": "Artikel",
       "map": "Geografische Abdeckung",
       "contact": "Kontakt",
-      "readMore": "Read more",
-      "downloadRequest": "Gesuch als PDF",
-      "downloadResponse": "Antwort als PDF",
-      "notFound": "Article not found.",
-      "backToList": "← Back to Articles",
+      "readMore": "Mehr lesen",
+      "request": "Anfrage",
+      "response": "Antwort",
       "footer": "Mit ❤️ gemacht von Open Gov Climate"
+    },
+    "buttons": {
+      "backToHome": "← Zurück",
+      "backToList": "← Zurück zu den Anfragen",
+      "downloadRequest": "Anfrage-PDF herunterladen",
+      "downloadResponse": "Antwort-PDF herunterladen"
+    },
+    "errors": {
+      "notFound": "Eintrag nicht gefunden."
     }
   },
   "fr": {
@@ -46,12 +62,19 @@
       "articles": "Articles",
       "map": "Couverture géographique",
       "contact": "Contact",
-      "readMore": "Read more",
-      "downloadRequest": "demande PDF",
-      "downloadResponse": "réponse PDF",
-      "notFound": "Article not found.",
-      "backToList": "← Back to Articles",
+      "readMore": "Lire la suite",
+      "request": "Demande",
+      "response": "Réponse",
       "footer": "Fait avec ❤️ par Open Gov Climate"
+    },
+    "buttons": {
+      "backToHome": "← Retour",
+      "backToList": "← Retour aux demandes",
+      "downloadRequest": "Télécharger la demande (PDF)",
+      "downloadResponse": "Télécharger la réponse (PDF)"
+    },
+    "errors": {
+      "notFound": "Élément non trouvé."
     }
   },
   "it": {
@@ -65,12 +88,19 @@
       "articles": "Articoli",
       "map": "Copertura geografica",
       "contact": "Contatto",
-      "readMore": "Read more",
-      "downloadRequest": "domanda PDF",
-      "downloadResponse": "risposta PDF",
-      "notFound": "Article not found.",
-      "backToList": "← Back to Articles",
+      "readMore": "Leggi di più",
+      "request": "Richiesta",
+      "response": "Risposta",
       "footer": "Fatto con ❤️ da Open Gov Climate"
+    },
+    "buttons": {
+      "backToHome": "← Torna indietro",
+      "backToList": "← Torna alle richieste",
+      "downloadRequest": "Scarica richiesta (PDF)",
+      "downloadResponse": "Scarica risposta (PDF)"
+    },
+    "errors": {
+      "notFound": "Elemento non trovato."
     }
   }
 }
