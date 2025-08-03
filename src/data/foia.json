@@ -8,13 +8,13 @@
       "it": "Studio sui sistemi di raffreddamento dei ghiacciai"
     },
     "summary": {
-      "en": "Analysis of passive and active glacier cooling measures.",
+      "en": "Requesting research, funding reports and data on passive and active glacier‑cooling methods over the past five years, including techniques like reflective covers, artificial snowmaking and shading.",
       "de": "Analyse passiver und aktiver Gletscherkühlungsmaßnahmen.",
       "fr": "Analyse des mesures de refroidissement passives et actives des glaciers.",
       "it": "Analisi delle misure di raffreddamento passive e attive dei ghiacciai."
     },
-    "request_text": "Please provide documentation on all glacier cooling research funded in the last 5 years.",
-    "response_text": "Attached is the funding report and research data.",
+    "request_text": "Please provide all documentation on glacier‑cooling research funded in the last five years, including studies on passive and active techniques such as reflective blankets, artificial snowmaking and shading.",
+    "response_text": "Attached are the funding reports and research datasets for the requested glacier‑cooling projects.",
     "request_pdf": "foia1_request.pdf",
     "response_pdf": "foia1_response.pdf",
     "latitude": 46.8,
@@ -29,13 +29,13 @@
       "it": "Progetti solari ad alta quota"
     },
     "summary": {
-      "en": "Requesting documents on environmental assessments for alpine solar installations.",
+      "en": "Requesting environmental impact assessments, planning documents and public consultation reports for high‑altitude photovoltaic projects since 2023; the response provides the impact‑assessment summary and anonymised public comments.",
       "de": "Anfrage nach Umweltprüfungen für alpine Solaranlagen.",
       "fr": "Demande de documents concernant les évaluations environnementales pour les installations solaires alpines.",
       "it": "Richiesta di documenti sulle valutazioni ambientali per gli impianti solari alpini."
     },
     "request_text": "Please provide all environmental impact assessments, planning documents and public consultations related to high-altitude photovoltaic projects since 2023.",
-    "response_text": "Enclosed you will find the impact assessment summary and public comments (data anonymised).",
+    "response_text": "Enclosed you will find the impact‑assessment summary and anonymised records of public comments.",
     "request_pdf": "foia2_request.pdf",
     "response_pdf": "foia2_response.pdf",
     "latitude": 46.5,
