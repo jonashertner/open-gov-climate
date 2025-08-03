@@ -1,19 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/global.css';
 
 const languages = [
   { code: 'en', label: 'EN' },
   { code: 'de', label: 'DE' },
   { code: 'fr', label: 'FR' },
-  { code: 'it', label: 'IT' },
+  { code: 'it', label: 'IT' }
 ];
 
 export default function Header({ lang, setLang }) {
   return (
     <header style={{ padding: '16px 0', textAlign: 'center' }}>
-      <div style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Open Gov Climate</div>
+      <h1 style={{ margin: 0, fontSize: '1.5rem' }}>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          Open Gov Climate
+        </Link>
+      </h1>
       <div style={{ marginTop: '8px', display: 'inline-flex', gap: '8px' }}>
-        {languages.map(({code, label}) => (
+        {languages.map(({ code, label }) => (
           <button
             key={code}
             onClick={() => setLang(code)}

@@ -12,8 +12,8 @@ export default function ArticleDetail({ lang }) {
   if (!article) {
     return (
       <section className="container">
-        <p>{t.errors.notFound || 'Article not found.'}</p>
-        <Link to="/articles">{t.buttons.backToList || 'Back to Articles'}</Link>
+        <p>{t.errors.notFound}</p>
+        <Link to="/">{t.buttons.backToHome}</Link>
       </section>
     );
   }
@@ -26,7 +26,7 @@ export default function ArticleDetail({ lang }) {
         dangerouslySetInnerHTML={{ __html: article.content[lang] }}
       />
       <p>
-        <Link to="/articles">{t.buttons.backToList || '← Back to Articles'}</Link>
+        <Link to="/">{t.buttons.backToHome}</Link>
       </p>
     </section>
   );

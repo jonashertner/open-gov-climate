@@ -13,7 +13,7 @@ export default function FOIADetail({ lang }) {
     return (
       <section className="container">
         <p>{t.errors.notFound}</p>
-        <Link to="/foia">{t.buttons.backToList}</Link>
+        <Link to="/">{t.buttons.backToHome}</Link>
       </section>
     );
   }
@@ -51,7 +51,7 @@ export default function FOIADetail({ lang }) {
       )}
 
       <p>
-        <Link to="/foia">{t.buttons.backToList}</Link>
+        <Link to="/">{t.buttons.backToHome}</Link>
       </p>
     </section>
   );
