@@ -25,7 +25,7 @@ function App() {
             <FOIAList />
             <MapSection />
             <FeaturedArticles />
-            <Articles />
+            <Articles lang={lang} />
             <Contact />
           </main>
           <Footer />

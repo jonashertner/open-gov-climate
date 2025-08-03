@@ -3,7 +3,7 @@ import { useT } from '../i18n';
 import ARTICLES from '../data/articles.json';
 import '../styles/global.css';
 
-export default function Articles() {
+export default function Articles({ lang }) {
   const t = useT();
   return (
     <section className="container">
