@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/open-gov-climate/static/css/main.24044e89.css",
-    "main.js": "/open-gov-climate/static/js/main.5f8f5375.js",
-    "index.html": "/open-gov-climate/index.html",
-    "main.24044e89.css.map": "/open-gov-climate/static/css/main.24044e89.css.map",
-    "main.5f8f5375.js.map": "/open-gov-climate/static/js/main.5f8f5375.js.map"
+    "main.css": "./static/css/main.24044e89.css",
+    "main.js": "./static/js/main.e1c65a71.js",
+    "index.html": "./index.html",
+    "main.24044e89.css.map": "./static/css/main.24044e89.css.map",
+    "main.e1c65a71.js.map": "./static/js/main.e1c65a71.js.map"
   },
   "entrypoints": [
     "static/css/main.24044e89.css",
-    "static/js/main.5f8f5375.js"
+    "static/js/main.e1c65a71.js"
   ]
 }

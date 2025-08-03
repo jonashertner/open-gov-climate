@@ -2,7 +2,7 @@
   "name": "open-gov-climate",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://jonashertner.github.io/open-gov-climate",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
