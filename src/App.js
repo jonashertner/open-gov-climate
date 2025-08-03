@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Intro from './components/Intro';
 import Disclosures from './components/Disclosures';
 import FOIAList from './components/FOIAList';
+import FOIADetail from './components/FOIADetail';
 import MapSection from './components/MapSection';
 import Articles from './components/Articles';
 import ArticleDetail from './components/ArticleDetail';
@@ -18,10 +19,7 @@ function App() {
   return (
     <I18nProvider lang={lang}>
       <Router>
-        {/* Site header with language switcher */}
         <Header lang={lang} setLang={setLang} />
-
-        {/* Background wrapper (optional)—remove if handled in CSS */}
         <div
           style={{
             backgroundImage: `url(${bgUrl})`,
@@ -31,37 +29,33 @@ function App() {
             minHeight: '100vh'
           }}
         >
-          {/* Main routing */}
           <Routes>
-            {/* Home page: FOIA, map, article summaries, etc */}
             <Route
               path="/"
               element={
                 <main>
                   <Intro />
                   <Disclosures />
-                  <FOIAList />
+                  <FOIAList lang={lang} />
                   <MapSection />
                   <Articles lang={lang} />
                   <Contact />
                 </main>
               }
             />
-
-            {/* Articles list (if you want a dedicated /articles page) */}
+            <Route
+              path="/foia/:id"
+              element={<FOIADetail lang={lang} />}
+            />
             <Route
               path="/articles"
               element={<Articles lang={lang} />}
             />
-
-            {/* Single article detail */}
             <Route
               path="/articles/:id"
               element={<ArticleDetail lang={lang} />}
             />
           </Routes>
-
-          {/* Global footer */}
           <Footer />
         </div>
       </Router>
