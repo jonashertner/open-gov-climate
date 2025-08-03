@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Intro from './components/Intro';
@@ -11,23 +11,18 @@ import Footer from './components/Footer';
 import { I18nProvider } from './i18n';
 
 function App() {
-  const [lang, setLang] = useState('en');
   return (
-    <I18nProvider lang={lang}>
+    <I18nProvider>
       <Router>
-        <Header lang={lang} setLang={setLang} />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Intro />
-              <Disclosures />
-              <FOIAList />
-              <MapSection />
-              <Contact />
-            </>
-          }/>
-          <Route path="/articles" element={<Articles />} />
-        </Routes>
+        <Header />
+        <main>
+          <Intro />
+          <Disclosures />
+          <FOIAList />
+          <MapSection />
+          <Articles />
+          <Contact />
+        </main>
         <Footer />
       </Router>
     </I18nProvider>

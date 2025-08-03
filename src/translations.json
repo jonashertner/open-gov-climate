@@ -1,21 +1,8 @@
 {
   "en": {
-    "nav": {
-      "foia": "FOIA Requests",
-      "articles": "Articles",
-      "contact": "Contact"
-    },
-    "banner": "Fostering transparency and dialogue on climate issues in Switzerland.",
     "intro": {
       "title": "Why It Matters",
-      "text": "Under the Swiss Freedom of Information Act (BGÖ/FOIA), transparency in government actions is crucial for accountability on climate mitigation measures—such as sustainable energy policies, glacier preservation, and alpine water storage projects. With rising Alpine temperatures, effective cooling strategies (forestry, high-albedo surfaces) and resilient infrastructure prevent irreversible glacier loss and secure drinking water reserves."
-    },
-    "disclosures": [
-      "2024 Glacier Melt Report: 15% Alpine Ice Loss"
-    ],
-    "about": "Open Gov Climate consolidates BGÖ/FOIA requests and responses on temperature-mitigating initiatives and water storage capabilities in the Swiss Alps. It empowers citizens to monitor government action and fosters data-driven dialogue.",
-    "contact": {
-      "placeholder": "Submit an anonymous tip…"
+      "text": "As Alpine temperatures rise and glaciers shrink, Switzerland is responding with measures to mitigate the effects of both. Public awareness of these initiatives is important to ensure an informed, evidence-based conversation. Switzerland’s Freedom of Information Act (Öffentlichkeitsgesetz, BGÖ) empowers citizens to request official documents, ensuring transparency in how authorities address these issues. Open Gov Climate is a public database that consolidates FOIA requests and government responses about cooling initiatives and water storage projects in the Swiss Alps."
     },
     "headings": {
       "foia": "FOIA Requests",
@@ -23,26 +10,13 @@
       "articles": "Articles",
       "map": "Geographic Coverage",
       "contact": "Contact",
-      "footer": "Made with ❤️ by Open Gov Climate"
+      "footer": "Made with ❤️ by Open Gov Climate"
     }
   },
   "de": {
-    "nav": {
-      "foia": "FOIA-Anfragen",
-      "articles": "Artikel",
-      "contact": "Kontakt"
-    },
-    "banner": "Förderung von Transparenz und Dialog zu Klimafragen in der Schweiz.",
     "intro": {
       "title": "Warum es wichtig ist",
-      "text": "Steigende Temperaturen in den Alpen beschleunigen das Abschmelzen der Gletscher."
-    },
-    "disclosures": [
-      "Gletscherschwund 2024: 15% Eisverlust"
-    ],
-    "about": "Open Gov Climate ist eine minimalistische Open-Database mit Schweizer FOIA-Anfragen und Antworten.",
-    "contact": {
-      "placeholder": "Anonymen Tipp eingeben…"
+      "text": "Da die Temperaturen in den Alpen steigen und die Gletscher schrumpfen, reagiert die Schweiz mit Maßnahmen zur Abmilderung beider Effekte. Die öffentliche Aufmerksamkeit für diese Initiativen ist wichtig, um eine fundierte, faktenbasierte Diskussion zu gewährleisten. Das Schweizer Öffentlichkeitsgesetz (BGÖ) befähigt Bürger, offizielle Dokumente anzufordern und so Transparenz darüber zu schaffen, wie die Behörden diese Themen angehen. Open Gov Climate ist eine öffentliche Datenbank, die FOIA-Anfragen und Regierungsantworten zu Kühlungsinitiativen und Wasser­speicherprojekten in den Schweizer Alpen konsolidiert."
     },
     "headings": {
       "foia": "FOIA-Anfragen",
@@ -50,26 +24,13 @@
       "articles": "Artikel",
       "map": "Geografische Abdeckung",
       "contact": "Kontakt",
-      "footer": "Mit ❤️ gemacht von Open Gov Climate"
+      "footer": "Mit ❤️ gemacht von Open Gov Climate"
     }
   },
   "fr": {
-    "nav": {
-      "foia": "Demandes FOIA",
-      "articles": "Articles",
-      "contact": "Contact"
-    },
-    "banner": "Favoriser la transparence et le dialogue sur les enjeux climatiques en Suisse.",
     "intro": {
       "title": "Pourquoi c'est important",
-      "text": "La hausse des températures dans les Alpes accélère la fonte des glaciers."
-    },
-    "disclosures": [
-      "Fonte des glaciers 2024: perte de 15% de glace alpine"
-    ],
-    "about": "Open Gov Climate est une base de données minimale et ouverte des demandes FOIA suisses et de leurs réponses.",
-    "contact": {
-      "placeholder": "Soumettre un conseil anonyme…"
+      "text": "Alors que les températures alpines augmentent et que les glaciers rétrécissent, la Suisse répond par des mesures visant à atténuer les effets des deux. La sensibilisation du public à ces initiatives est essentielle pour garantir une conversation éclairée et fondée sur des preuves. La loi suisse sur la liberté d'information (BGÖ) permet aux citoyens de demander des documents officiels, assurant la transparence sur la manière dont les autorités traitent ces questions. Open Gov Climate est une base de données publique qui regroupe les demandes FOIA et les réponses gouvernementales concernant les initiatives de refroidissement et les projets de stockage d'eau dans les Alpes suisses."
     },
     "headings": {
       "foia": "Demandes FOIA",
@@ -77,26 +38,13 @@
       "articles": "Articles",
       "map": "Couverture géographique",
       "contact": "Contact",
-      "footer": "Fait avec ❤️ par Open Gov Climate"
+      "footer": "Fait avec ❤️ par Open Gov Climate"
     }
   },
   "it": {
-    "nav": {
-      "foia": "Richieste FOIA",
-      "articles": "Articoli",
-      "contact": "Contatto"
-    },
-    "banner": "Promuovere trasparenza e dialogo sulle questioni climatiche in Svizzera.",
     "intro": {
       "title": "Perché è importante",
-      "text": "L'aumento delle temperature nelle Alpi accelera lo scioglimento dei ghiacciai."
-    },
-    "disclosures": [
-      "Scioglimento dei ghiacciai 2024: perdita del 15% di ghiaccio alpino"
-    ],
-    "about": "Open Gov Climate è un database minimale e aperto delle richieste FOIA svizzere e delle loro risposte.",
-    "contact": {
-      "placeholder": "Invia un suggerimento anonimo…"
+      "text": "Con l'aumento delle temperature alpine e il ritiro dei ghiacciai, la Svizzera risponde con misure volte a mitigare gli effetti di entrambi. La consapevolezza pubblica di queste iniziative è importante per garantire una conversazione informata e basata su prove. La legge svizzera sulla libertà di informazione (BGÖ) consente ai cittadini di richiedere documenti ufficiali, garantendo trasparenza su come le autorità affrontano queste questioni. Open Gov Climate è un database pubblico che consolida le richieste FOIA e le risposte del governo riguardanti le iniziative di raffreddamento e i progetti di stoccaggio dell'acqua nelle Alpi svizzere."
     },
     "headings": {
       "foia": "Richieste FOIA",
@@ -104,7 +52,7 @@
       "articles": "Articoli",
       "map": "Copertura geografica",
       "contact": "Contatto",
-      "footer": "Fatto con ❤️ da Open Gov Climate"
+      "footer": "Fatto con ❤️ da Open Gov Climate"
     }
   }
 }

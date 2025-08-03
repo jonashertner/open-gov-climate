@@ -1,33 +1,27 @@
 import React, { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
-import FOIA_DATA from '../data/foia.json';
 import { useT } from '../i18n';
+import FOIA_DATA from '../data/foia.json';
 import '../styles/global.css';
 
 export default function MapSection() {
-  const t = useT();
   const ref = useRef();
-  const mapRef = useRef();
   useEffect(() => {
-    mapRef.current = new maplibregl.Map({
+    const map = new maplibregl.Map({
       container: ref.current,
       style: 'https://vectortiles.geo.admin.ch/styles/ch.swisstopo.basemap.vt/style.json',
-      center: [8.2, 46.8],
+      center: [8.2,46.8],
       zoom: 6
     });
-    mapRef.current.addControl(new maplibregl.NavigationControl());
+    map.addControl(new maplibregl.NavigationControl());
     FOIA_DATA.forEach(e => {
-      if (e.latitude && e.longitude) {
-        new maplibregl.Marker()
-          .setLngLat([e.longitude, e.latitude])
-          .setPopup(new maplibregl.Popup().setHTML(
-            `<a href="#foia-${e.id}">${e.title.en}</a>`
-          ))
-          .addTo(mapRef.current);
-      }
+      new maplibregl.Marker().setLngLat([e.longitude,e.latitude])
+        .setPopup(new maplibregl.Popup().setHTML(`<a href="#foia-${e.id}">${e.title.en}</a>`))
+        .addTo(map);
     });
-    return () => mapRef.current.remove();
+    return () => map.remove();
   }, []);
+  const t = useT();
   return (
     <section className="container">
       <h2>{t.headings.map}</h2>

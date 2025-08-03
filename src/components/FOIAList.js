@@ -1,50 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import lunr from 'lunr';
+import { useT } from '../i18n';
 import FOIA_DATA from '../data/foia.json';
 import '../styles/global.css';
 
 export default function FOIAList() {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState(FOIA_DATA);
-  let idx;
+  const t = useT();
+  const [q, setQ] = useState('');
+  const [res, setRes] = useState(FOIA_DATA);
   useEffect(() => {
-    idx = lunr(function() {
-      this.ref('id');
-      this.field('title');
-      this.field('summary');
-      FOIA_DATA.forEach(doc => this.add({
-        id: doc.id,
-        title: doc.title.en,
-        summary: doc.summary.en
-      }));
+    const idx = lunr(function() {
+      this.ref('id'); this.field('title'); this.field('summary');
+      FOIA_DATA.forEach(d => this.add({ id: d.id, title: d.title.en, summary: d.summary.en }));
     });
-  }, []);
-  useEffect(() => {
-    if (!query) return setResults(FOIA_DATA);
+    if (!q) return setRes(FOIA_DATA);
     try {
-      const m = idx.search(query).map(r=>FOIA_DATA.find(d=>d.id===r.ref));
-      setResults(m);
-    } catch {
-      setResults(FOIA_DATA);
-    }
-  }, [query]);
+      setRes(idx.search(q).map(r => FOIA_DATA.find(d => d.id === r.ref)));
+    } catch { setRes(FOIA_DATA); }
+  }, [q]);
   return (
     <section className="container">
-      <h2>FOIA Requests</h2>
-      <input type="search" placeholder="Search…" value={query} onChange={e=>setQuery(e.target.value)} />
-      {results.map(entry=> {
-        const req = entry.request_text? entry.request_text.slice(0,150):''; 
-        const res = entry.response_text? entry.response_text.slice(0,150):'';
-        return (
-          <article id={`foia-${entry.id}`} key={entry.id} style={{marginBottom:'24px'}}>
-            <h3>{entry.title.en}</h3>
-            <p><strong>Request:</strong> {req}{entry.request_text.length>150?'…':''}</p>
-            {entry.request_pdf && <a href={`/data/${entry.request_pdf}`} target="_blank" rel="noopener">Download PDF</a>}
-            <p><strong>Response:</strong> {res}{entry.response_text.length>150?'…':''}</p>
-            {entry.response_pdf && <a href={`/data/${entry.response_pdf}`} target="_blank" rel="noopener">Download PDF</a>}
-          </article>
-        );
-      })}
+      <h2>{t.headings.foia}</h2>
+      <input className="input-search" type="search" placeholder="Search…" value={q} onChange={e => setQ(e.target.value)} />
+      {res.map(e => (
+        <article id={`foia-${e.id}`} key={e.id}>
+          <h3>{e.title.en}</h3>
+          <p>{e.request_text}</p>
+        </article>
+      ))}
     </section>
   );
 }

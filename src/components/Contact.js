@@ -7,10 +7,7 @@ export default function Contact() {
   return (
     <section className="container" id="contact">
       <h2>{t.headings.contact}</h2>
-      <p>
-        For secure communication, please email us at{' '}
-        <a href="mailto:opengovclimate@pm.me">opengovclimate@pm.me</a>.
-      </p>
+      <p>Secure communication: <a href="mailto:opengovclimate@pm.me">opengovclimate@pm.me</a></p>
     </section>
   );
 }
