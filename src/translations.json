@@ -11,6 +11,8 @@
       "map": "Geographic Coverage",
       "contact": "Contact",
       "readMore": "Read more",
+      "notFound": "Article not found.",
+      "backToList": "← Back to Articles",
       "footer": "Made with ❤️ by Open Gov Climate"
     }
   },
@@ -26,6 +28,8 @@
       "map": "Geografische Abdeckung",
       "contact": "Kontakt",
       "readMore": "Read more",
+      "notFound": "Article not found.",
+      "backToList": "← Back to Articles",
       "footer": "Mit ❤️ gemacht von Open Gov Climate"
     }
   },
@@ -41,6 +45,8 @@
       "map": "Couverture géographique",
       "contact": "Contact",
       "readMore": "Read more",
+      "notFound": "Article not found.",
+      "backToList": "← Back to Articles",
       "footer": "Fait avec ❤️ par Open Gov Climate"
     }
   },
@@ -56,6 +62,8 @@
       "map": "Copertura geografica",
       "contact": "Contatto",
       "readMore": "Read more",
+      "notFound": "Article not found.",
+      "backToList": "← Back to Articles",
       "footer": "Fatto con ❤️ da Open Gov Climate"
     }
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useT } from '../i18n';
 import ARTICLES from '../data/articles.json';
 import '../styles/global.css';
+import { Link } from 'react-router-dom';
 
 export default function Articles({ lang }) {
   const t = useT();
@@ -9,36 +10,17 @@ export default function Articles({ lang }) {
   return (
     <section className="container">
       <h2>{t.headings.articles}</h2>
-
-      {/* Summaries with “Read more” anchors */}
-      <div style={{ marginBottom: '2rem' }}>
+      <ul>
         {ARTICLES.map(a => (
-          <div key={a.id} style={{ marginBottom: '1.5rem' }}>
-            <h3>{a.title[lang]}</h3>
+          <li key={a.id} style={{ marginBottom: '1rem' }}>
+            <h3>
+              <Link to={`/articles/${a.id}`}>{a.title[lang]}</Link>
+            </h3>
             <p>{a.summary[lang]}</p>
-            <a href={`#article-${a.id}`}>{t.headings.readMore || 'Read more'}</a>
-          </div>
+            <Link to={`/articles/${a.id}`}>{t.headings.readMore}</Link>
+          </li>
         ))}
-      </div>
-
-      <hr />
-
-      {/* Full-text versions, anchored */}
-      <div>
-        {ARTICLES.map(a => (
-          <article
-            id={`article-${a.id}`}
-            key={a.id}
-            style={{ marginBottom: '3rem' }}
-          >
-            <h3>{a.title[lang]}</h3>
-            <div
-              className="article-content"
-              dangerouslySetInnerHTML={{ __html: a.content[lang] }}
-            />
-          </article>
-        ))}
-      </div>
+      </ul>
     </section>
   );
 }
