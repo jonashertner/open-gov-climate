@@ -2,7 +2,7 @@
   "name": "open-gov-climate",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://<your-username>.github.io/open-gov-climate",
+  "homepage": "https://jonashertner.github.io/open-gov-climate",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -19,5 +19,17 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
