@@ -1,8 +1,8 @@
 [
   {
     "id": "1",
-    "title": { "en": "Understanding Alpine Glacier Melt" },
-    "summary": { "en": "An article analyzing glacier melt impacts." },
-    "url": "https://example.com/glacier-melt"
+    "title": { "en": "Sample Climate Article" },
+    "summary": { "en": "An overview of Alpine climate impacts." },
+    "url": "https://example.com"
   }
 ]

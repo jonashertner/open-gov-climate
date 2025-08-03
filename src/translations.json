@@ -3,32 +3,32 @@
     "nav": { "foia": "FOIA Requests", "articles": "Articles", "contact": "Contact" },
     "banner": "Fostering transparency and dialogue on climate issues in Switzerland.",
     "intro": { "title": "Why It Matters", "text": "Rising temperatures in the Alps accelerate glacier melt." },
-    "disclosures": [ "2024 Glacier Melt Report: 15% Alpine Ice Loss" ],
-    "about": "Open Gov Climate is a minimal, open database of Swiss FOIA requests.",
+    "disclosures": ["2024 Glacier Melt Report: 15% Alpine Ice Loss"],
+    "about": "Open Gov Climate is a minimal, open database of Swiss FOIA requests and responses.",
     "contact": { "placeholder": "Submit an anonymous tip…" }
   },
   "de": {
     "nav": { "foia": "FOIA-Anfragen", "articles": "Artikel", "contact": "Kontakt" },
     "banner": "Förderung von Transparenz und Dialog zu Klimafragen in der Schweiz.",
     "intro": { "title": "Warum es wichtig ist", "text": "Steigende Temperaturen in den Alpen beschleunigen das Abschmelzen der Gletscher." },
-    "disclosures": [ "Gletscherschwund 2024: 15% Eisverlust" ],
-    "about": "Open Gov Climate ist eine minimalistische Open-Database mit Schweizer FOIA-Anfragen.",
+    "disclosures": ["Gletscherschwund 2024: 15% Eisverlust"],
+    "about": "Open Gov Climate ist eine minimalistische Open-Database mit Schweizer FOIA-Anfragen und Antworten.",
     "contact": { "placeholder": "Anonymen Tipp eingeben…" }
   },
   "fr": {
     "nav": { "foia": "Demandes FOIA", "articles": "Articles", "contact": "Contact" },
     "banner": "Favoriser la transparence et le dialogue sur les enjeux climatiques en Suisse.",
     "intro": { "title": "Pourquoi c'est important", "text": "La hausse des températures dans les Alpes accélère la fonte des glaciers." },
-    "disclosures": [ "Fonte des glaciers 2024 : perte de 15 % de glace" ],
-    "about": "Open Gov Climate est une base de données FOIA ouverte minimaliste.",
+    "disclosures": ["Fonte des glaciers 2024: perte de 15% de glace alpine"],
+    "about": "Open Gov Climate est une base de données minimale et ouverte des demandes FOIA suisses et de leurs réponses.",
     "contact": { "placeholder": "Soumettre un conseil anonyme…" }
   },
   "it": {
     "nav": { "foia": "Richieste FOIA", "articles": "Articoli", "contact": "Contatto" },
     "banner": "Promuovere trasparenza e dialogo sulle questioni climatiche in Svizzera.",
     "intro": { "title": "Perché è importante", "text": "L'aumento delle temperature nelle Alpi accelera lo scioglimento dei ghiacciai." },
-    "disclosures": [ "Scioglimento dei ghiacciai 2024: perdita del 15 % di ghiaccio" ],
-    "about": "Open Gov Climate è un database FOIA aperto minimalista.",
+    "disclosures": ["Scioglimento dei ghiacciai 2024: perdita del 15% di ghiaccio alpino"],
+    "about": "Open Gov Climate è un database minimale e aperto delle richieste FOIA svizzere e delle loro risposte.",
     "contact": { "placeholder": "Invia un suggerimento anonimo…" }
   }
 }
