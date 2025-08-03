@@ -4,41 +4,42 @@
   --spacing: 8px;
   --color-text: #222;
 }
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('/relief_switzerland_minimalist.png') center/cover no-repeat fixed;
-  opacity: 0.08;
-  z-index: -1;
-}
+
 body {
   margin: 0;
-  font-family: 'Aktiv Grotesk', Helvetica, Arial, sans-serif;
+  font-family: 'Aktiv Grotesk', Helvetica, sans-serif;
   font-size: var(--font-base);
   color: var(--color-text);
   line-height: 1.5;
 }
+
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: calc(var(--spacing) * 2);
+  background: rgba(255,255,255,0.9);
+  border-radius: 4px;
 }
-h2 {
-  margin-top: 0;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Aktiv Grotesk', Helvetica, Arial, sans-serif;
 }
+
 a {
   color: #000;
   text-decoration: underline;
 }
-.input-search {
+
+.input-search, textarea {
   width: 100%;
-  padding: calc(var(--spacing));
+  padding: var(--spacing);
 }
+
 .map-container {
   height: 300px;
   margin: calc(var(--spacing) * 2) 0;
 }
+
 @media (max-width: 600px) {
   .container {
     padding: var(--spacing);

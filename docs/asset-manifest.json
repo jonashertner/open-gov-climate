@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/open-gov-climate/static/css/main.0a4e98f6.css",
-    "main.js": "/open-gov-climate/static/js/main.0dc1fe0f.js",
-    "static/media/relief_switzerland_minimalist.png": "/open-gov-climate/static/media/relief_switzerland_minimalist.a73ba101ac46482a2242.png",
+    "main.css": "/open-gov-climate/static/css/main.a23b1b45.css",
+    "main.js": "/open-gov-climate/static/js/main.2d2b12a9.js",
     "index.html": "/open-gov-climate/index.html",
-    "main.0a4e98f6.css.map": "/open-gov-climate/static/css/main.0a4e98f6.css.map",
-    "main.0dc1fe0f.js.map": "/open-gov-climate/static/js/main.0dc1fe0f.js.map"
+    "main.a23b1b45.css.map": "/open-gov-climate/static/css/main.a23b1b45.css.map",
+    "main.2d2b12a9.js.map": "/open-gov-climate/static/js/main.2d2b12a9.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a4e98f6.css",
-    "static/js/main.0dc1fe0f.js"
+    "static/css/main.a23b1b45.css",
+    "static/js/main.2d2b12a9.js"
   ]
 }

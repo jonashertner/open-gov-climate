@@ -1,5 +1,6 @@
 {
   "en": {
+    "siteTitle": "Open Gov Climate Initiative",
     "intro": {
       "title": "Why It Matters",
       "text": "As Alpine temperatures climb and glaciers recede, Switzerland is deploying targeted measures—from innovative cooling techniques to enhanced water storage systems—to safeguard its mountain ecosystems and communities. Public engagement, enabled by the Öffentlichkeitsgesetz (BGÖ/FOIA), ensures that these initiatives remain transparent and accountable. Open Gov Climate aggregates FOIA requests and official responses, empowering citizens and researchers to track progress, evaluate outcomes, and drive evidence-based dialogue."
@@ -13,7 +14,7 @@
       "readMore": "Read more",
       "request": "Request",
       "response": "Response",
-      "footer": "Made with ❤️ by Open Gov Climate"
+      "footer": "Made with ❤️ by Open Gov Climate Initiative"
     },
     "buttons": {
       "backToHome": "← Back home",
@@ -26,6 +27,7 @@
     }
   },
   "de": {
+    "siteTitle": "Open Gov Climate Initiative",
     "intro": {
       "title": "Warum es wichtig ist",
       "text": "Während die Temperaturen in den Alpen steigen und die Gletscher zurückgehen, setzt die Schweiz gezielte Maßnahmen um – von innovativen Kühltechniken bis hin zu verbesserten Wasserspeichersystemen –, um ihre Bergökosysteme und Gemeinden zu schützen. Die Beteiligung der Öffentlichkeit, ermöglicht durch das Öffentlichkeitsgesetz (BGÖ/FOIA), gewährleistet eine transparente und verantwortungsvolle Umsetzung. Open Gov Climate bündelt FOIA-Anfragen und amtliche Antworten, damit Bürger:innen und Forschende Fortschritte verfolgen, Ergebnisse bewerten und faktenbasierte Diskussionen anstoßen können."
@@ -39,7 +41,7 @@
       "readMore": "Mehr lesen",
       "request": "Anfrage",
       "response": "Antwort",
-      "footer": "Mit ❤️ gemacht von Open Gov Climate"
+      "footer": "Mit ❤️ gemacht von Open Gov Climate Initiative"
     },
     "buttons": {
       "backToHome": "← Zurück",
@@ -52,6 +54,7 @@
     }
   },
   "fr": {
+    "siteTitle": "Open Gov Climate Initiative",
     "intro": {
       "title": "Pourquoi c'est important",
       "text": "Alors que les températures alpines augmentent et que les glaciers reculent, la Suisse met en œuvre des mesures ciblées – des techniques de refroidissement innovantes aux systèmes de stockage d’eau améliorés – pour préserver ses écosystèmes montagnards et ses communautés. La participation du public, rendue possible par la loi sur la liberté d'information (BGÖ/FOIA), garantit la transparence et la responsabilité de ces initiatives. Open Gov Climate regroupe les demandes FOIA et les réponses officielles, permettant aux citoyen·ne·s et aux chercheurs de suivre les avancées, d’évaluer les résultats et de stimuler un dialogue fondé sur des preuves."
@@ -65,7 +68,7 @@
       "readMore": "Lire la suite",
       "request": "Demande",
       "response": "Réponse",
-      "footer": "Fait avec ❤️ par Open Gov Climate"
+      "footer": "Fait avec ❤️ par Open Gov Climate Initiative"
     },
     "buttons": {
       "backToHome": "← Retour",
@@ -78,6 +81,7 @@
     }
   },
   "it": {
+    "siteTitle": "Open Gov Climate Initiative",
     "intro": {
       "title": "Perché è importante",
       "text": "Con l’aumento delle temperature alpine e il ritiro dei ghiacciai, la Svizzera implementa misure mirate – dalle tecniche di raffreddamento innovative ai sistemi di accumulo idrico avanzati – per tutelare gli ecosistemi montani e le comunità locali. Il coinvolgimento pubblico, reso possibile dalla legge sulla libertà d’informazione (BGÖ/FOIA), assicura trasparenza e responsabilità. Open Gov Climate aggrega le richieste FOIA e le risposte ufficiali, consentendo a cittadini e ricercatori di monitorare i progressi, valutare i risultati e promuovere un dialogo basato su dati concreti."
@@ -91,7 +95,7 @@
       "readMore": "Leggi di più",
       "request": "Richiesta",
       "response": "Risposta",
-      "footer": "Fatto con ❤️ da Open Gov Climate"
+      "footer": "Fatto con ❤️ da Open Gov Climate Initiative"
     },
     "buttons": {
       "backToHome": "← Torna indietro",

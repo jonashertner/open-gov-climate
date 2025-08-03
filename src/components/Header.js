@@ -12,9 +12,12 @@ const languages = [
 export default function Header({ lang, setLang }) {
   return (
     <header style={{ padding: '16px 0', textAlign: 'center' }}>
-      <h1 style={{ margin: 0, fontSize: '1.5rem' }}>
+      <h1 style={{ margin: 0, fontSize: '1.5rem', fontFamily: 'Aktiv Grotesk, Helvetica, Arial, sans-serif' }}>
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          Open Gov Climate
+          {/* Use the translated siteTitle */}
+          {lang === 'de' || lang === 'fr' || lang === 'it'
+            ? 'Open Gov Climate Initiative'
+            : 'Open Gov Climate Initiative'}
         </Link>
       </h1>
       <div style={{ marginTop: '8px', display: 'inline-flex', gap: '8px' }}>
@@ -28,7 +31,8 @@ export default function Header({ lang, setLang }) {
               color: code === lang ? '#fff' : 'var(--color-text)',
               padding: '4px 8px',
               cursor: 'pointer',
-              borderRadius: '4px'
+              borderRadius: '4px',
+              fontFamily: 'Aktiv Grotesk, Helvetica, Arial, sans-serif'
             }}
             aria-label={`Switch to ${label}`}
           >
