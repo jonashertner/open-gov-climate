@@ -1,11 +1,14 @@
+// src/components/MapSection.js
 import React, { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import { useT } from '../i18n';
 import FOIA_DATA from '../data/foia.json';
 import '../styles/global.css';
 
-export default function MapSection() {
+export default function MapSection({ lang }) {
   const ref = useRef();
+  const t = useT();
+
   useEffect(() => {
     const map = new maplibregl.Map({
       container: ref.current,
@@ -14,15 +17,22 @@ export default function MapSection() {
       zoom: 6
     });
     map.addControl(new maplibregl.NavigationControl());
-    FOIA_DATA.forEach(e => {
+
+    FOIA_DATA.forEach(entry => {
+      const popup = new maplibregl.Popup({ offset: 25 })
+        .setHTML(
+          `<a href="#/foia/${entry.id}" style="color:#000;text-decoration:underline;">${entry.title[lang]}</a>`
+        );
+
       new maplibregl.Marker()
-        .setLngLat([e.longitude, e.latitude])
-        .setPopup(new maplibregl.Popup().setHTML(`<a href="#foia-${e.id}">${e.title.en}</a>`))
+        .setLngLat([entry.longitude, entry.latitude])
+        .setPopup(popup)
         .addTo(map);
     });
+
     return () => map.remove();
-  }, []);
-  const t = useT();
+  }, [lang]);
+
   return (
     <section className="container">
       <h2>{t.headings.map}</h2>

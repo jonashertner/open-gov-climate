@@ -50,7 +50,7 @@ function App() {
                     <Intro />
                     <Disclosures lang={lang} />
                     <FOIAList lang={lang} />
-                    <MapSection />
+                    <MapSection lang={lang} />
                     <Articles lang={lang} />
                     <Contact />
                   </>
