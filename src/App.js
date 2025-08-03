@@ -15,14 +15,6 @@ function App() {
   const bgUrl = process.env.PUBLIC_URL + '/relief_switzerland_minimalist.png';
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${bgUrl})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
-    >
       <I18nProvider lang={lang}>
         <Router>
           <Header lang={lang} setLang={setLang} />
@@ -37,7 +29,6 @@ function App() {
           <Footer />
         </Router>
       </I18nProvider>
-    </div>
   );
 }
 

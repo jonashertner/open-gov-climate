@@ -4,6 +4,14 @@
   --spacing: 8px;
   --color-text: #222;
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('/relief_switzerland_minimalist.png') center/cover no-repeat fixed;
+  opacity: 0.08;
+  z-index: -1;
+}
 body {
   margin: 0;
   font-family: 'Aktiv Grotesk', Helvetica, Arial, sans-serif;
