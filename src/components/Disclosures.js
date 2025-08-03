@@ -9,7 +9,11 @@ export default function Disclosures() {
     <section className="container">
       <h2>{t.headings.disclosures}</h2>
       <ul>
-        {FOIA_DATA.map(e => <li key={e.id}><a href={`#foia-${e.id}`}>{e.title.en}</a></li>)}
+        {FOIA_DATA.map(e => (
+          <li key={e.id}>
+            <a href={`#foia-${e.id}`}>{e.title.en}</a>
+          </li>
+        ))}
       </ul>
     </section>
   );

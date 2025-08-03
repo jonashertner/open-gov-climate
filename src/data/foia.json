@@ -1,8 +1,12 @@
 [
   {
     "id": "1",
-    "title": { "en": "Glacier Cooling Systems Study" },
-    "summary": { "en": "Analysis of passive and active glacier cooling measures." },
+    "title": {
+      "en": "Glacier Cooling Systems Study"
+    },
+    "summary": {
+      "en": "Analysis of passive and active glacier cooling measures."
+    },
     "request_text": "Please provide documentation on all glacier cooling research funded in the last 5 years.",
     "response_text": "Attached is the funding report and research data.",
     "request_pdf": "foia1_request.pdf",

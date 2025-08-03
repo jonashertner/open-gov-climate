@@ -10,12 +10,13 @@ export default function MapSection() {
     const map = new maplibregl.Map({
       container: ref.current,
       style: 'https://vectortiles.geo.admin.ch/styles/ch.swisstopo.basemap.vt/style.json',
-      center: [8.2,46.8],
+      center: [8.2, 46.8],
       zoom: 6
     });
     map.addControl(new maplibregl.NavigationControl());
     FOIA_DATA.forEach(e => {
-      new maplibregl.Marker().setLngLat([e.longitude,e.latitude])
+      new maplibregl.Marker()
+        .setLngLat([e.longitude, e.latitude])
         .setPopup(new maplibregl.Popup().setHTML(`<a href="#foia-${e.id}">${e.title.en}</a>`))
         .addTo(map);
     });

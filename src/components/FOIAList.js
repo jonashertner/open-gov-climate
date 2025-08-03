@@ -16,7 +16,9 @@ export default function FOIAList() {
     if (!q) return setRes(FOIA_DATA);
     try {
       setRes(idx.search(q).map(r => FOIA_DATA.find(d => d.id === r.ref)));
-    } catch { setRes(FOIA_DATA); }
+    } catch {
+      setRes(FOIA_DATA);
+    }
   }, [q]);
   return (
     <section className="container">

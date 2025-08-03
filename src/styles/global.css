@@ -20,7 +20,6 @@ h2 {
   margin-top: 0;
 }
 a {
-  color: inherit;
   text-decoration: underline;
 }
 .input-search {
@@ -32,6 +31,10 @@ a {
   margin: calc(var(--spacing) * 2) 0;
 }
 @media (max-width: 600px) {
-  .container { padding: calc(var(--spacing)); }
-  h2 { font-size: 1.25rem; }
+  .container {
+    padding: var(--spacing);
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
 }
