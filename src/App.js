@@ -16,7 +16,7 @@ import { I18nProvider } from './i18n';
 
 function App() {
   const [lang, setLang] = useState('en');
-  // PUBLIC_URL resolves to your GitHub Pages base path
+  // This resolves to: /open-gov-climate/relief_switzerland_minimalist.png
   const bgUrl = process.env.PUBLIC_URL + '/relief_switzerland_minimalist.png';
 
   return (
@@ -24,21 +24,24 @@ function App() {
       <Router>
         <div
           style={{
+            // Relief map behind, fixed
             backgroundImage: `url(${bgUrl})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
+
+            // White overlay to mute the image
+            backgroundColor: 'rgba(255,255,255,0.85)',
+
+            // Ensure full-screen coverage
             minHeight: '100vh',
             width: '100%',
           }}
         >
-          {/* Header with translated title and language buttons */}
           <Header lang={lang} setLang={setLang} />
 
-          {/* Main content area with routing */}
           <main>
             <Routes>
-              {/* Home overview */}
               <Route
                 path="/"
                 element={
@@ -53,20 +56,17 @@ function App() {
                 }
               />
 
-              {/* FOIA listing & detail */}
               <Route path="/foia" element={<FOIAList lang={lang} />} />
               <Route path="/foia/:id" element={<FOIADetail lang={lang} />} />
 
-              {/* Article listing & detail */}
               <Route path="/articles" element={<Articles lang={lang} />} />
               <Route path="/articles/:id" element={<ArticleDetail lang={lang} />} />
 
-              {/* Fallback to home for any unknown route */}
+              {/* fallback to home */}
               <Route path="*" element={<Intro />} />
             </Routes>
           </main>
 
-          {/* Global footer */}
           <Footer />
         </div>
       </Router>
