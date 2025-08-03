@@ -20,7 +20,7 @@ export default function ArticleDetail({ lang }) {
 
   return (
     <section className="container">
-      <h2>{article.title[lang]}</h2>
+      {/* The title is now part of the content HTML, so we don’t render it twice */}
       <div
         className="article-content"
         dangerouslySetInnerHTML={{ __html: article.content[lang] }}
