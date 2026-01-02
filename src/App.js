@@ -13,32 +13,15 @@ import ArticleDetail from './components/ArticleDetail';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { I18nProvider } from './i18n';
+import './styles/global.css';
 
 function App() {
   const [lang, setLang] = useState('en');
-  const bgUrl = process.env.PUBLIC_URL + '/relief_switzerland_minimalist.png';
 
   return (
     <I18nProvider lang={lang}>
       <Router>
-        {/* Background image as an <img> with low opacity, fixed behind everything */}
-        <img
-          src={bgUrl}
-          alt=""
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            opacity: 0.08,
-            zIndex: -1
-          }}
-        />
-
-        {/* All your content lives on top */}
-        <div style={{ position: 'relative', minHeight: '100vh', width: '100%' }}>
+        <div className="app-wrapper">
           <Header lang={lang} setLang={setLang} />
 
           <main>
