@@ -1,24 +1,60 @@
 {
   "en": {
-    "siteTitle": "Open Gov Climate Initiative",
+    "siteTitle": "Open Gov Climate",
     "intro": {
       "title": "Why It Matters",
-      "text": "The Swiss Alps are warming, causing glaciers to shrink and water supplies to become less predictable. To protect alpine ecosystems and communities, authorities are testing measures such as glacier shading, artificial snowmaking and new water‑storage reservoirs. Because these interventions can have significant environmental impacts, transparency and public oversight are essential. Under Switzerland’s Freedom of Information law (BGÖ/FOIA), Open Gov Climate collects and publishes FOIA requests and official responses so residents and researchers can monitor projects, verify their effectiveness, and participate in informed, evidence‑based discussions."
+      "text": "The Swiss Alps are warming, causing glaciers to shrink and water supplies to become less predictable. To protect alpine ecosystems and communities, authorities are testing measures such as glacier shading, artificial snowmaking and new water-storage reservoirs. Under Switzerland's Freedom of Information law (BGO/FOIA), Open Gov Climate collects and publishes official requests and responses so residents and researchers can monitor projects and participate in evidence-based discussions."
+    },
+    "hero": {
+      "badge": "Swiss Transparency Initiative",
+      "titleStart": "Protecting the Alps Through ",
+      "titleAccent": "Transparency",
+      "cta": "View FOIA Requests",
+      "ctaSecondary": "Explore Map",
+      "statFoia": "FOIA Requests",
+      "statLang": "Languages",
+      "statTransparent": "Transparent"
     },
     "headings": {
       "foia": "FOIA Requests",
       "disclosures": "Important Disclosures",
       "articles": "Articles",
       "map": "Geographic Coverage",
-      "contact": "Contact",
+      "contact": "Get In Touch",
       "readMore": "Read more",
       "request": "Request",
       "response": "Response",
-      "footer": "Made with ❤️ by Open Gov Climate Initiative"
+      "footer": "Made with care by Open Gov Climate"
+    },
+    "foia": {
+      "description": "Official requests and responses under Switzerland's Freedom of Information law (BGO/FOIA)",
+      "responded": "Response Received"
+    },
+    "disclosures": {
+      "title": "Quick Access",
+      "description": "Browse all available documents and articles"
+    },
+    "map": {
+      "title": "Project Locations",
+      "description": "Interactive map showing documented climate intervention projects across the Swiss Alps"
+    },
+    "articles": {
+      "sectionTitle": "Latest Insights",
+      "description": "In-depth analysis and coverage of Alpine climate initiatives",
+      "category": "Climate Research"
+    },
+    "contact": {
+      "description": "Have questions about our FOIA requests or want to contribute? Reach out through secure channels.",
+      "secure": "End-to-end encrypted via ProtonMail"
+    },
+    "footer": {
+      "rights": "All rights reserved.",
+      "home": "Home",
+      "madeWith": "Made with transparency in mind"
     },
     "buttons": {
-      "backToHome": "← Back home",
-      "backToList": "← Back to Requests",
+      "backToHome": "Back home",
+      "backToList": "Back to Requests",
       "downloadRequest": "Download Request PDF",
       "downloadResponse": "Download Response PDF"
     },
@@ -27,10 +63,20 @@
     }
   },
   "de": {
-    "siteTitle": "Open Gov Climate-Initiative",
+    "siteTitle": "Open Gov Climate",
     "intro": {
       "title": "Warum es wichtig ist",
-      "text": "Während die Temperaturen in den Alpen steigen und die Gletscher zurückgehen, setzt die Schweiz gezielte Maßnahmen um – von innovativen Kühltechniken bis hin zu verbesserten Wasserspeichersystemen –, um ihre Bergökosysteme und Gemeinden zu schützen. Die Beteiligung der Öffentlichkeit, ermöglicht durch das Öffentlichkeitsgesetz (BGÖ/FOIA), gewährleistet eine transparente und verantwortungsvolle Umsetzung. Open Gov Climate bündelt FOIA-Anfragen und amtliche Antworten, damit Bürger:innen und Forschende Fortschritte verfolgen, Ergebnisse bewerten und faktenbasierte Diskussionen anstoßen können."
+      "text": "Die Temperaturen in den Alpen steigen und die Gletscher ziehen sich zuruck. Die Schweiz setzt gezielte Massnahmen um, um ihre Bergokosysteme und Gemeinden zu schutzen. Die Beteiligung der Offentlichkeit, ermoglicht durch das Offentlichkeitsgesetz (BGO/FOIA), gewahrleistet eine transparente Umsetzung. Open Gov Climate bundelt FOIA-Anfragen und amtliche Antworten, damit Burger:innen und Forschende Fortschritte verfolgen und faktenbasierte Diskussionen anstossen konnen."
+    },
+    "hero": {
+      "badge": "Schweizer Transparenz-Initiative",
+      "titleStart": "Schutz der Alpen durch ",
+      "titleAccent": "Transparenz",
+      "cta": "FOIA-Anfragen ansehen",
+      "ctaSecondary": "Karte erkunden",
+      "statFoia": "FOIA-Anfragen",
+      "statLang": "Sprachen",
+      "statTransparent": "Transparent"
     },
     "headings": {
       "foia": "FOIA-Anfragen",
@@ -41,11 +87,37 @@
       "readMore": "Mehr lesen",
       "request": "Anfrage",
       "response": "Antwort",
-      "footer": "Mit ❤️ gemacht von Open Gov Climate-Initiative"
+      "footer": "Mit Sorgfalt erstellt von Open Gov Climate"
+    },
+    "foia": {
+      "description": "Offizielle Anfragen und Antworten nach dem Schweizer Offentlichkeitsgesetz (BGO/FOIA)",
+      "responded": "Antwort erhalten"
+    },
+    "disclosures": {
+      "title": "Schnellzugriff",
+      "description": "Alle verfugbaren Dokumente und Artikel durchsuchen"
+    },
+    "map": {
+      "title": "Projektstandorte",
+      "description": "Interaktive Karte mit dokumentierten Klimainterventionsprojekten in den Schweizer Alpen"
+    },
+    "articles": {
+      "sectionTitle": "Neueste Erkenntnisse",
+      "description": "Tiefgehende Analysen und Berichterstattung uber alpine Klimainitiativen",
+      "category": "Klimaforschung"
+    },
+    "contact": {
+      "description": "Haben Sie Fragen zu unseren FOIA-Anfragen oder mochten Sie beitragen? Kontaktieren Sie uns uber sichere Kanale.",
+      "secure": "Ende-zu-Ende verschlusselt via ProtonMail"
+    },
+    "footer": {
+      "rights": "Alle Rechte vorbehalten.",
+      "home": "Startseite",
+      "madeWith": "Mit Transparenz im Sinn erstellt"
     },
     "buttons": {
-      "backToHome": "← Zurück",
-      "backToList": "← Zurück zu den Anfragen",
+      "backToHome": "Zuruck",
+      "backToList": "Zuruck zu den Anfragen",
       "downloadRequest": "Anfrage-PDF herunterladen",
       "downloadResponse": "Antwort-PDF herunterladen"
     },
@@ -54,37 +126,83 @@
     }
   },
   "fr": {
-    "siteTitle": "Initiative Open Gov Climate",
+    "siteTitle": "Open Gov Climate",
     "intro": {
       "title": "Pourquoi c'est important",
-      "text": "Alors que les températures alpines augmentent et que les glaciers reculent, la Suisse met en œuvre des mesures ciblées – des techniques de refroidissement innovantes aux systèmes de stockage d’eau améliorés – pour préserver ses écosystèmes montagnards et ses communautés. La participation du public, rendue possible par la loi sur la liberté d'information (BGÖ/FOIA), garantit la transparence et la responsabilité de ces initiatives. Open Gov Climate regroupe les demandes FOIA et les réponses officielles, permettant aux citoyen·ne·s et aux chercheurs de suivre les avancées, d’évaluer les résultats et de stimuler un dialogue fondé sur des preuves."
+      "text": "Les temperatures alpines augmentent et les glaciers reculent. La Suisse met en oeuvre des mesures ciblees pour preserver ses ecosystemes montagnards et ses communautes. La participation du public, rendue possible par la loi sur la liberte d'information (BGO/FOIA), garantit la transparence. Open Gov Climate regroupe les demandes FOIA et les reponses officielles, permettant aux citoyens et aux chercheurs de suivre les avancees et de stimuler un dialogue fonde sur des preuves."
+    },
+    "hero": {
+      "badge": "Initiative Suisse de Transparence",
+      "titleStart": "Proteger les Alpes par la ",
+      "titleAccent": "Transparence",
+      "cta": "Voir les demandes FOIA",
+      "ctaSecondary": "Explorer la carte",
+      "statFoia": "Demandes FOIA",
+      "statLang": "Langues",
+      "statTransparent": "Transparent"
     },
     "headings": {
       "foia": "Demandes FOIA",
-      "disclosures": "Communiqués importants",
+      "disclosures": "Communiques importants",
       "articles": "Articles",
-      "map": "Couverture géographique",
+      "map": "Couverture geographique",
       "contact": "Contact",
       "readMore": "Lire la suite",
       "request": "Demande",
-      "response": "Réponse",
-      "footer": "Fait avec ❤️ par Initiative Open Gov Climate"
+      "response": "Reponse",
+      "footer": "Fait avec soin par Open Gov Climate"
+    },
+    "foia": {
+      "description": "Demandes et reponses officielles selon la loi suisse sur la liberte d'information (BGO/FOIA)",
+      "responded": "Reponse recue"
+    },
+    "disclosures": {
+      "title": "Acces rapide",
+      "description": "Parcourir tous les documents et articles disponibles"
+    },
+    "map": {
+      "title": "Localisation des projets",
+      "description": "Carte interactive montrant les projets d'intervention climatique documentes dans les Alpes suisses"
+    },
+    "articles": {
+      "sectionTitle": "Dernieres analyses",
+      "description": "Analyses approfondies et couverture des initiatives climatiques alpines",
+      "category": "Recherche climatique"
+    },
+    "contact": {
+      "description": "Des questions sur nos demandes FOIA ou souhaitez contribuer? Contactez-nous via des canaux securises.",
+      "secure": "Chiffrement de bout en bout via ProtonMail"
+    },
+    "footer": {
+      "rights": "Tous droits reserves.",
+      "home": "Accueil",
+      "madeWith": "Fait avec la transparence a l'esprit"
     },
     "buttons": {
-      "backToHome": "← Retour",
-      "backToList": "← Retour aux demandes",
-      "downloadRequest": "Télécharger la demande (PDF)",
-      "downloadResponse": "Télécharger la réponse (PDF)"
+      "backToHome": "Retour",
+      "backToList": "Retour aux demandes",
+      "downloadRequest": "Telecharger la demande (PDF)",
+      "downloadResponse": "Telecharger la reponse (PDF)"
     },
     "errors": {
-      "notFound": "Élément non trouvé."
+      "notFound": "Element non trouve."
     }
   },
   "it": {
-    "siteTitle": "Iniziativa Open Gov Climate",
+    "siteTitle": "Open Gov Climate",
     "intro": {
-      "title": "Perché è importante",
-      "text": "Con l’aumento delle temperature alpine e il ritiro dei ghiacciai, la Svizzera implementa misure mirate – dalle tecniche di raffreddamento innovative ai sistemi di accumulo idrico avanzati – per tutelare gli ecosistemi montani e le comunità locali. Il coinvolgimento pubblico, reso possibile dalla legge sulla libertà d’informazione (BGÖ/FOIA), assicura trasparenza e responsabilità. Open Gov Climate aggrega le richieste FOIA e le risposte ufficiali, consentendo a cittadini e ricercatori di monitorare i progressi, valutare i risultati e promuovere un dialogo basato su dati concreti."
+      "title": "Perche e importante",
+      "text": "Le temperature alpine aumentano e i ghiacciai si ritirano. La Svizzera implementa misure mirate per tutelare gli ecosistemi montani e le comunita locali. Il coinvolgimento pubblico, reso possibile dalla legge sulla liberta d'informazione (BGO/FOIA), assicura trasparenza. Open Gov Climate aggrega le richieste FOIA e le risposte ufficiali, consentendo a cittadini e ricercatori di monitorare i progressi e promuovere un dialogo basato su dati concreti."
+    },
+    "hero": {
+      "badge": "Iniziativa Svizzera per la Trasparenza",
+      "titleStart": "Proteggere le Alpi attraverso la ",
+      "titleAccent": "Trasparenza",
+      "cta": "Vedi richieste FOIA",
+      "ctaSecondary": "Esplora la mappa",
+      "statFoia": "Richieste FOIA",
+      "statLang": "Lingue",
+      "statTransparent": "Trasparente"
     },
     "headings": {
       "foia": "Richieste FOIA",
@@ -92,14 +210,40 @@
       "articles": "Articoli",
       "map": "Copertura geografica",
       "contact": "Contatto",
-      "readMore": "Leggi di più",
+      "readMore": "Leggi di piu",
       "request": "Richiesta",
       "response": "Risposta",
-      "footer": "Fatto con ❤️ da Iniziativa Open Gov Climate"
+      "footer": "Fatto con cura da Open Gov Climate"
+    },
+    "foia": {
+      "description": "Richieste e risposte ufficiali secondo la legge svizzera sulla liberta d'informazione (BGO/FOIA)",
+      "responded": "Risposta ricevuta"
+    },
+    "disclosures": {
+      "title": "Accesso rapido",
+      "description": "Sfoglia tutti i documenti e gli articoli disponibili"
+    },
+    "map": {
+      "title": "Localizzazione progetti",
+      "description": "Mappa interattiva che mostra i progetti di intervento climatico documentati nelle Alpi svizzere"
+    },
+    "articles": {
+      "sectionTitle": "Ultime analisi",
+      "description": "Analisi approfondite e copertura delle iniziative climatiche alpine",
+      "category": "Ricerca climatica"
+    },
+    "contact": {
+      "description": "Hai domande sulle nostre richieste FOIA o vuoi contribuire? Contattaci attraverso canali sicuri.",
+      "secure": "Crittografia end-to-end via ProtonMail"
+    },
+    "footer": {
+      "rights": "Tutti i diritti riservati.",
+      "home": "Home",
+      "madeWith": "Fatto con la trasparenza in mente"
     },
     "buttons": {
-      "backToHome": "← Torna indietro",
-      "backToList": "← Torna alle richieste",
+      "backToHome": "Torna indietro",
+      "backToList": "Torna alle richieste",
       "downloadRequest": "Scarica richiesta (PDF)",
       "downloadResponse": "Scarica risposta (PDF)"
     },
