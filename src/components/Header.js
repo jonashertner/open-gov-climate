@@ -36,7 +36,7 @@ export default function Header({ lang, setLang }) {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="header">
+    <header className={`header ${menuOpen ? 'menu-open' : ''}`}>
       <div className="header-inner">
         <Link to="/" className="logo" onClick={closeMenu}>
           {t.siteTitle}
