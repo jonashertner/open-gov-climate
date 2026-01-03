@@ -1,10 +1,8 @@
-// src/App.js
 import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Intro from './components/Intro';
-import Disclosures from './components/Disclosures';
 import FOIAList from './components/FOIAList';
 import FOIADetail from './components/FOIADetail';
 import MapSection from './components/MapSection';
@@ -22,16 +20,16 @@ function App() {
     <I18nProvider lang={lang}>
       <Router>
         <div className="app-wrapper">
+          <a href="#main-content" className="skip-link">Skip to content</a>
           <Header lang={lang} setLang={setLang} />
 
-          <main>
+          <main id="main-content">
             <Routes>
               <Route
                 path="/"
                 element={
                   <>
                     <Intro />
-                    <Disclosures lang={lang} />
                     <FOIAList lang={lang} />
                     <MapSection lang={lang} />
                     <Articles lang={lang} />
@@ -46,7 +44,6 @@ function App() {
               <Route path="/articles" element={<Articles lang={lang} />} />
               <Route path="/articles/:id" element={<ArticleDetail lang={lang} />} />
 
-              {/* fallback to home */}
               <Route path="*" element={<Intro />} />
             </Routes>
           </main>
