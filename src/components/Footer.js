@@ -13,6 +13,9 @@ export default function Footer() {
           <p className="footer-text">
             © {new Date().getFullYear()} {t.siteTitle}. {t.footer.rights}
           </p>
+          <p className="footer-text">
+            Coordinated by <a href="https://jonashertner.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{display: 'inline'}}>jonashertner.com</a>
+          </p>
           <nav className="footer-links" aria-label="Footer navigation">
             <Link to="/" className="footer-link">{t.footer.home}</Link>
             <a href="#foia" className="footer-link">{t.headings.foia}</a>
