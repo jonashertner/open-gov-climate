@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useT } from '../i18n';
 import '../styles/global.css';
 
@@ -12,7 +12,25 @@ const languages = [
 
 export default function Header({ lang, setLang }) {
   const t = useT();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
@@ -31,26 +49,25 @@ export default function Header({ lang, setLang }) {
           aria-expanded={menuOpen}
         >
           {menuOpen ? (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           ) : (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <line x1="4" y1="8" x2="20" y2="8"></line>
+              <line x1="4" y1="16" x2="20" y2="16"></line>
             </svg>
           )}
         </button>
 
-        <nav className={`nav ${menuOpen ? 'open' : ''}`}>
+        <nav className={`nav ${menuOpen ? 'open' : ''}`} role="navigation">
           <a href="#foia" className="nav-link" onClick={closeMenu}>{t.headings.foia}</a>
           <a href="#map" className="nav-link" onClick={closeMenu}>{t.headings.map}</a>
           <a href="#articles" className="nav-link" onClick={closeMenu}>{t.headings.articles}</a>
           <a href="#contact" className="nav-link" onClick={closeMenu}>{t.headings.contact}</a>
 
-          <div className="lang-switcher">
+          <div className="lang-switcher" role="group" aria-label="Language selection">
             {languages.map(({ code, label }) => (
               <button
                 key={code}
@@ -59,7 +76,7 @@ export default function Header({ lang, setLang }) {
                   closeMenu();
                 }}
                 className={`lang-btn ${code === lang ? 'active' : ''}`}
-                aria-label={`Switch to ${label}`}
+                aria-pressed={code === lang}
               >
                 {label}
               </button>
