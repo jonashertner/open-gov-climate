@@ -279,6 +279,9 @@ section {
   cursor: pointer;
   color: var(--black);
   transition: opacity var(--duration-fast) var(--ease-out);
+  /* Ensure button stays above mobile nav overlay */
+  position: relative;
+  z-index: 1001;
 }
 
 .menu-btn:hover {
