@@ -8,12 +8,15 @@ export default function Contact() {
   return (
     <section id="contact" className="contact-section">
       <div className="container">
-        <h2>{t.headings.contact}</h2>
-        <p>Questions or contributions welcome.</p>
-        <a href="mailto:opengovclimate@pm.me" className="contact-email">
-          opengovclimate@pm.me
-        </a>
-        <p className="contact-note">Encrypted via ProtonMail</p>
+        <div className="contact-inner">
+          <p className="section-eyebrow">{t.headings.contact}</p>
+          <h2>{t.headings.contact}</h2>
+          <p className="contact-text">{t.contact.description}</p>
+          <a href="mailto:opengovclimate@pm.me" className="contact-email">
+            opengovclimate@pm.me
+          </a>
+          <p className="contact-note">{t.contact.secure}</p>
+        </div>
       </div>
     </section>
   );

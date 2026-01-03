@@ -16,23 +16,23 @@ export default function MapSection({ lang }) {
       container: mapContainerRef.current,
       style: 'https://vectortiles.geo.admin.ch/styles/ch.swisstopo.basemap.vt/style.json',
       center: [8.2, 46.8],
-      zoom: 7
+      zoom: 7,
+      attributionControl: false
     });
 
-    map.addControl(new maplibregl.NavigationControl(), 'top-right');
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
     FOIA_DATA.forEach(entry => {
-      const popup = new maplibregl.Popup({ offset: 25 })
+      const popup = new maplibregl.Popup({ offset: 25, closeButton: true })
         .setHTML(`
-          <div>
-            <strong>${entry.title[lang]}</strong>
-            <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: #666;">
-              <a href="#/foia/${entry.id}">View details →</a>
-            </p>
+          <div style="max-width: 240px;">
+            <strong style="display: block; margin-bottom: 0.5rem; color: #0a0a0a;">${entry.title[lang]}</strong>
+            <a href="#/foia/${entry.id}" style="font-size: 0.8125rem; color: #0a0a0a; font-weight: 500;">${t.headings.readMore} →</a>
           </div>
         `);
 
-      new maplibregl.Marker({ color: '#111111' })
+      new maplibregl.Marker({ color: '#0a0a0a' })
         .setLngLat([entry.longitude, entry.latitude])
         .setPopup(popup)
         .addTo(map);
@@ -44,17 +44,17 @@ export default function MapSection({ lang }) {
       map.remove();
       mapRef.current = null;
     };
-  }, [lang]);
+  }, [lang, t.headings.readMore]);
 
   return (
     <section id="map" className="map-section">
       <div className="container">
-        <div className="map-header">
-          <p className="section-label">{t.headings.map}</p>
-          <h2>Project Locations</h2>
-        </div>
+        <header className="map-header">
+          <p className="section-eyebrow">{t.headings.map}</p>
+          <h2>{t.map.title}</h2>
+        </header>
       </div>
-      <div ref={mapContainerRef} className="map-container"></div>
+      <div ref={mapContainerRef} className="map-container" role="application" aria-label={t.map.description}></div>
     </section>
   );
 }
