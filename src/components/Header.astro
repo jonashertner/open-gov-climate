@@ -6,11 +6,11 @@ const lang = getLangFromUrl(Astro.url);
 const currentPath = Astro.url.pathname.replace(/^\/(en|de|fr|it)/, '') || '/';
 
 const navLinks = [
-  { key: 'nav.foia' as const, href: `/${lang}/foia` },
-  { key: 'nav.map' as const, href: `/${lang}/map` },
+  { key: 'nav.evidence' as const, href: `/${lang}/evidence` },
+  { key: 'nav.map' as const, href: `/${lang}/#map` },
   { key: 'nav.timeline' as const, href: `/${lang}/timeline` },
   { key: 'nav.articles' as const, href: `/${lang}/articles` },
-  { key: 'nav.contact' as const, href: `/${lang}/contact` },
+  { key: 'nav.contact' as const, href: `/${lang}/#contact` },
 ];
 ---
 
