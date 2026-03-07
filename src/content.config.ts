@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 const foia = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/foia' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/foia', generateId: ({ entry }) => entry.replace(/\.md$/, '').replace(/\//g, '-') }),
   schema: z.object({
     slug: z.string(),
     lang: z.enum(['en', 'de', 'fr', 'it']),
@@ -25,7 +25,7 @@ const foia = defineCollection({
 });
 
 const articles = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/articles', generateId: ({ entry }) => entry.replace(/\.md$/, '').replace(/\//g, '-') }),
   schema: z.object({
     slug: z.string(),
     lang: z.enum(['en', 'de', 'fr', 'it']),
