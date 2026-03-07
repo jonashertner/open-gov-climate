@@ -1,0 +1,108 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ShareCite from '../../../components/ShareCite.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { t, type Lang } from '../../../i18n/utils';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('articles');
+  return entries.map(entry => ({
+    params: { lang: entry.data.lang, slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { lang } = Astro.params as { lang: Lang };
+const { Content } = await render(entry);
+
+const allArticles = await getCollection('articles');
+const related = allArticles.filter(a =>
+  a.data.lang === lang &&
+  entry.data.relatedSlugs.includes(a.data.slug)
+);
+---
+
+<Base title={entry.data.title} description={entry.data.summary} lang={lang}>
+  <Header slot="header" />
+
+  <article class="article-detail container">
+    <a href={`/${lang}/#articles`} class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      {t(lang, 'articles.backLink')}
+    </a>
+
+    <header class="article-detail__header">
+      <p class="label">{entry.data.category}</p>
+      <h1>{entry.data.title}</h1>
+      <div class="article-detail__meta">
+        <time class="mono" datetime={entry.data.date.toISOString().split('T')[0]}>
+          {entry.data.date.toISOString().split('T')[0]}
+        </time>
+        <span aria-hidden="true">&middot;</span>
+        <span class="mono">{entry.data.readingTime} {t(lang, 'articles.readingTime')}</span>
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <ShareCite
+      title={entry.data.title}
+      url={`https://opengovclimate.ch/${lang}/articles/${entry.data.slug}/`}
+      date={entry.data.date}
+      lang={lang}
+    />
+
+    {related.length > 0 && (
+      <section class="article-detail__related">
+        <h2>{t(lang, 'articles.relatedArticles')}</h2>
+        <div class="grid-2">
+          {related.map(r => <ArticleCard entry={r} lang={lang} />)}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    margin-bottom: var(--space-8);
+  }
+
+  .article-detail__header h1 {
+    margin-top: var(--space-3);
+  }
+
+  .article-detail__meta {
+    margin-top: var(--space-4);
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .prose {
+    margin-top: var(--space-12);
+  }
+
+  .article-detail__related {
+    margin-top: var(--space-16);
+  }
+
+  .article-detail__related h2 {
+    margin-bottom: var(--space-8);
+  }
+</style>
