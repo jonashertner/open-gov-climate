@@ -1,0 +1,88 @@
+---
+import { t, type Lang } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  url: string;
+  date: Date;
+  lang: Lang;
+}
+
+const { title, url, date, lang } = Astro.props;
+const year = date.getFullYear();
+const citation = `Open Gov Climate. (${year}). ${title}. Retrieved from ${url}`;
+const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+const mailUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+---
+
+<div class="share-cite">
+  <button class="share-cite__btn" type="button" data-copy={url} data-copied-text={t(lang, 'share.copied')}>
+    {t(lang, 'share.copyUrl')}
+  </button>
+  <button class="share-cite__btn" type="button" data-copy={citation} data-copied-text={t(lang, 'share.copied')}>
+    {t(lang, 'share.copyCitation')}
+  </button>
+  <a href={twitterUrl} target="_blank" rel="noopener noreferrer" class="share-cite__btn">
+    Twitter
+  </a>
+  <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" class="share-cite__btn">
+    LinkedIn
+  </a>
+  <a href={mailUrl} class="share-cite__btn">
+    Email
+  </a>
+</div>
+
+<style>
+  .share-cite {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-12);
+  }
+
+  .share-cite__btn {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    border: 1px solid var(--border);
+    padding: var(--space-2) var(--space-4);
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    min-width: 48px;
+    transition: border-color var(--duration-fast) var(--ease);
+  }
+
+  .share-cite__btn:hover {
+    border-color: var(--ink);
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.share-cite__btn[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      const copiedText = btn.dataset.copiedText || 'Copied!';
+      if (!text) return;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        const original = btn.textContent;
+        btn.textContent = copiedText;
+        setTimeout(() => {
+          btn.textContent = original;
+        }, 2000);
+      } catch {
+        // Fallback: do nothing if clipboard API is unavailable
+      }
+    });
+  });
+</script>
