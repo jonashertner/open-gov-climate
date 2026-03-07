@@ -1,0 +1,80 @@
+---
+import { t, type Lang } from '../i18n/utils';
+
+interface Props { entries: any[]; lang: Lang; }
+const { entries, lang } = Astro.props;
+
+function getStatusColor(status: string) {
+  return status === 'responded' || status === 'published' ? 'var(--status-green)' : 'var(--status-amber)';
+}
+---
+
+<div class="timeline">
+  {entries.map(entry => (
+    <div class="timeline__entry">
+      <div class="timeline__dot" style={`background-color: ${getStatusColor(entry.data.status)}`}></div>
+      <time class="mono timeline__date" datetime={entry.data.dateSubmitted.toISOString().split('T')[0]}>
+        {entry.data.dateSubmitted.toISOString().split('T')[0]}
+      </time>
+      <h3><a href={`/${lang}/foia/${entry.data.slug}/`}>{entry.data.title}</a></h3>
+      <p class="timeline__summary">{entry.data.summary}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: var(--space-8);
+    margin-top: var(--space-12);
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline__entry {
+    position: relative;
+    padding-bottom: var(--space-8);
+  }
+
+  .timeline__entry:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline__dot {
+    position: absolute;
+    left: calc(-1 * var(--space-8) + -1px);
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .timeline__date {
+    font-size: var(--text-xs);
+    color: var(--muted);
+  }
+
+  .timeline h3 {
+    margin-top: var(--space-1);
+    font-size: var(--text-lg);
+  }
+
+  .timeline h3 a {
+    text-decoration: none;
+  }
+
+  .timeline__summary {
+    margin-top: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--muted);
+    max-width: var(--prose-width);
+  }
+</style>

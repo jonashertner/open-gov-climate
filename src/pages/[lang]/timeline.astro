@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Timeline from '../../components/Timeline.astro';
+import { t, type Lang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'it' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const allFoia = await getCollection('foia');
+const entries = allFoia
+  .filter(f => f.data.lang === lang)
+  .sort((a, b) => a.data.dateSubmitted.getTime() - b.data.dateSubmitted.getTime());
+---
+
+<Base title={t(lang, 'timeline.heading')} lang={lang}>
+  <Header slot="header" />
+
+  <section class="section">
+    <div class="container">
+      <p class="label">{t(lang, 'timeline.label')}</p>
+      <h1>{t(lang, 'timeline.heading')}</h1>
+      <Timeline entries={entries} lang={lang} />
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
