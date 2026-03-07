@@ -10,7 +10,7 @@ const { lang } = Astro.props;
     <p class="label">{t(lang, 'hero.label')}</p>
     <h1>{t(lang, 'hero.title')}</h1>
     <p class="hero__description prose">{t(lang, 'hero.description')}</p>
-    <a href={`/${lang}/#foia`} class="hero__cta">
+    <a href={`/${lang}/evidence/`} class="hero__cta">
       {t(lang, 'hero.cta')}
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
