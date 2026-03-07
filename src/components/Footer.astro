@@ -1,0 +1,89 @@
+---
+import { getLangFromUrl, t, languages, type Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const year = new Date().getFullYear();
+
+const footerLinks = [
+  { label: 'Home', href: `/${lang}` },
+  { label: t(lang, 'nav.foia'), href: `/${lang}/foia` },
+  { label: t(lang, 'nav.articles'), href: `/${lang}/articles` },
+  { label: t(lang, 'nav.contact'), href: `/${lang}/contact` },
+  { label: t(lang, 'footer.rss'), href: `/${lang}/rss.xml` },
+  { label: t(lang, 'footer.data'), href: `/${lang}/data.json` },
+];
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <p class="copyright">&copy; {year} Open Gov Climate. {t(lang, 'footer.rights')}</p>
+      <p class="coordinated">{t(lang, 'footer.coordinatedBy')} <a href="https://jonashertner.com" class="footer-link">jonashertner.com</a></p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      {footerLinks.map(({ label, href }) => (
+        <a href={href} class="footer-link">{label}</a>
+      ))}
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: var(--space-24);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--gutter);
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .copyright {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .coordinated {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .footer-link {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease);
+  }
+
+  .footer-link:hover {
+    color: var(--ink);
+  }
+</style>
