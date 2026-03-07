@@ -1,6 +1,5 @@
-node_modules
-build
+node_modules/
+dist/
+.astro/
+.DS_Store
 .env.local
-.DS_Store
-.DS_Store
-.DS_Store

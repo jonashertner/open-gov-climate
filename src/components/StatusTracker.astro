@@ -1,0 +1,180 @@
+---
+import { t, type Lang, type TranslationKey } from '../i18n/utils';
+
+interface Props {
+  status: string;
+  dateSubmitted: Date;
+  dateAcknowledged?: Date;
+  dateResponded?: Date;
+  datePublished?: Date;
+  lang: Lang;
+}
+
+const { status, dateSubmitted, dateAcknowledged, dateResponded, datePublished, lang } = Astro.props;
+
+const steps = [
+  { key: 'foia.status.submitted' as TranslationKey, date: dateSubmitted, id: 'submitted' },
+  { key: 'foia.status.acknowledged' as TranslationKey, date: dateAcknowledged, id: 'acknowledged' },
+  { key: 'foia.status.responded' as TranslationKey, date: dateResponded, id: 'responded' },
+  { key: 'foia.status.published' as TranslationKey, date: datePublished, id: 'published' },
+];
+
+const statusOrder = ['submitted', 'acknowledged', 'responded', 'published'];
+const currentIndex = statusOrder.indexOf(status);
+
+function getStepState(index: number): 'completed' | 'current' | 'future' {
+  if (index < currentIndex) return 'completed';
+  if (index === currentIndex) return 'current';
+  return 'future';
+}
+
+function formatDate(date?: Date): string {
+  if (!date) return '';
+  return date.toISOString().split('T')[0];
+}
+---
+
+<div class="status-tracker" role="list" aria-label="Request status">
+  {steps.map((step, i) => {
+    const state = getStepState(i);
+    return (
+      <div class={`status-tracker__step status-tracker__step--${state}`} role="listitem">
+        {i > 0 && (
+          <div class={`status-tracker__line status-tracker__line--${i <= currentIndex ? 'completed' : 'future'}`} />
+        )}
+        <div class="status-tracker__circle" />
+        <span class="status-tracker__label">{t(lang, step.key)}</span>
+        {(state === 'completed' || state === 'current') && step.date && (
+          <time class="status-tracker__date mono" datetime={formatDate(step.date)}>
+            {formatDate(step.date)}
+          </time>
+        )}
+      </div>
+    );
+  })}
+</div>
+
+<style>
+  .status-tracker {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: var(--space-8);
+  }
+
+  .status-tracker__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+  }
+
+  .status-tracker__circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--paper);
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .status-tracker__step--completed .status-tracker__circle,
+  .status-tracker__step--current .status-tracker__circle {
+    border-color: var(--status-green);
+    background: var(--status-green);
+  }
+
+  .status-tracker__label {
+    margin-top: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--muted);
+    text-align: center;
+    line-height: var(--leading-snug);
+  }
+
+  .status-tracker__step--current .status-tracker__label {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .status-tracker__date {
+    margin-top: var(--space-1);
+    font-size: var(--text-xs);
+    color: var(--muted);
+  }
+
+  .status-tracker__line {
+    position: absolute;
+    top: 5px;
+    right: 50%;
+    width: 100%;
+    height: 2px;
+    z-index: 0;
+  }
+
+  .status-tracker__line--completed {
+    background: var(--status-green);
+  }
+
+  .status-tracker__line--future {
+    background: repeating-linear-gradient(
+      90deg,
+      var(--border) 0,
+      var(--border) 4px,
+      transparent 4px,
+      transparent 8px
+    );
+  }
+
+  /* Vertical layout on mobile */
+  @media (max-width: 767px) {
+    .status-tracker {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .status-tracker__step {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+    }
+
+    .status-tracker__label {
+      margin-top: 0;
+      text-align: left;
+    }
+
+    .status-tracker__date {
+      margin-top: 0;
+      margin-left: var(--space-2);
+    }
+
+    .status-tracker__line {
+      position: absolute;
+      top: auto;
+      right: auto;
+      left: 5px;
+      bottom: 50%;
+      width: 2px;
+      height: 100%;
+    }
+
+    .status-tracker__line--completed {
+      background: var(--status-green);
+    }
+
+    .status-tracker__line--future {
+      background: repeating-linear-gradient(
+        180deg,
+        var(--border) 0,
+        var(--border) 4px,
+        transparent 4px,
+        transparent 8px
+      );
+    }
+  }
+</style>

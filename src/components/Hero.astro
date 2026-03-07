@@ -1,0 +1,60 @@
+---
+import { t, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero__inner container">
+    <p class="label">{t(lang, 'hero.label')}</p>
+    <h1>{t(lang, 'hero.title')}</h1>
+    <p class="hero__description prose">{t(lang, 'hero.description')}</p>
+    <a href={`/${lang}/#foia`} class="hero__cta">
+      {t(lang, 'hero.cta')}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    border-top: 1px solid var(--ink);
+    padding-block: var(--space-24) var(--space-32);
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .hero h1 {
+    max-width: 14ch;
+  }
+
+  .hero__description {
+    color: var(--muted);
+    max-width: var(--prose-width);
+  }
+
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+    font-weight: 500;
+    text-decoration: none;
+    padding-top: var(--space-4);
+  }
+
+  .hero__cta:hover {
+    opacity: 0.65;
+  }
+
+  @media (max-width: 767px) {
+    .hero {
+      padding-block: var(--space-16) var(--space-24);
+    }
+  }
+</style>

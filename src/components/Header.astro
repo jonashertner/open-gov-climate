@@ -1,0 +1,323 @@
+---
+import { getLangFromUrl, t, languages, type Lang } from '../i18n/utils';
+import DarkModeToggle from './DarkModeToggle.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname.replace(/^\/(en|de|fr|it)/, '') || '/';
+
+const navLinks = [
+  { key: 'nav.foia' as const, href: `/${lang}/foia` },
+  { key: 'nav.map' as const, href: `/${lang}/map` },
+  { key: 'nav.timeline' as const, href: `/${lang}/timeline` },
+  { key: 'nav.articles' as const, href: `/${lang}/articles` },
+  { key: 'nav.contact' as const, href: `/${lang}/contact` },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href={`/${lang}`} class="logo">Open Gov Climate</a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {navLinks.map(({ key, href }) => (
+        <a href={href} class="nav-link">{t(lang, key)}</a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn search-trigger" type="button" aria-label={t(lang, 'search.placeholder')}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+
+      <div class="lang-switcher" role="navigation" aria-label="Language">
+        {Object.entries(languages).map(([code, label]) => (
+          <a
+            href={`/${code}${currentPath}`}
+            class:list={['lang-link', { active: code === lang }]}
+            aria-current={code === lang ? 'page' : undefined}
+          >{label}</a>
+        ))}
+      </div>
+
+      <DarkModeToggle />
+
+      <button class="icon-btn hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-overlay">
+        <svg class="hamburger-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg class="hamburger-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-overlay" class="mobile-overlay" aria-hidden="true">
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      {navLinks.map(({ key, href }) => (
+        <a href={href} class="mobile-nav-link">{t(lang, key)}</a>
+      ))}
+    </nav>
+    <div class="mobile-lang-switcher">
+      {Object.entries(languages).map(([code, label]) => (
+        <a
+          href={`/${code}${currentPath}`}
+          class:list={['lang-link', { active: code === lang }]}
+          aria-current={code === lang ? 'page' : undefined}
+        >{label}</a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 64px;
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  .logo {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: var(--tracking-tight);
+    white-space: nowrap;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  .desktop-nav {
+    display: none;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 1024px) {
+    .desktop-nav {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease);
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--ink);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    transition: color var(--duration-fast) var(--ease);
+  }
+
+  .icon-btn:hover {
+    color: var(--ink);
+  }
+
+  .lang-switcher {
+    display: none;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  @media (min-width: 1024px) {
+    .lang-switcher {
+      display: flex;
+    }
+  }
+
+  .lang-link {
+    font-size: var(--text-xs);
+    color: var(--muted);
+    text-decoration: none;
+    min-height: 48px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--duration-fast) var(--ease);
+  }
+
+  .lang-link:hover {
+    color: var(--ink);
+  }
+
+  .lang-link.active {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  @media (min-width: 1024px) {
+    .hamburger {
+      display: none;
+    }
+  }
+
+  .hamburger-close {
+    display: none;
+  }
+
+  :global(.mobile-open) .hamburger-open {
+    display: none;
+  }
+
+  :global(.mobile-open) .hamburger-close {
+    display: block;
+  }
+
+  /* Mobile overlay */
+  .mobile-overlay {
+    position: fixed;
+    inset: 64px 0 0 0;
+    background: var(--paper);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--duration-normal) var(--ease),
+      visibility var(--duration-normal) var(--ease);
+  }
+
+  .mobile-overlay[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-overlay {
+      display: none !important;
+    }
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .mobile-nav-link {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    transition: opacity var(--duration-fast) var(--ease);
+  }
+
+  .mobile-nav-link:hover {
+    opacity: 0.65;
+  }
+
+  .mobile-lang-switcher {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .mobile-lang-switcher .lang-link {
+    font-size: var(--text-sm);
+    min-height: 48px;
+    min-width: 48px;
+  }
+</style>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const overlay = document.getElementById('mobile-overlay');
+
+  function openMenu() {
+    overlay?.setAttribute('aria-hidden', 'false');
+    hamburger?.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('mobile-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    overlay?.setAttribute('aria-hidden', 'true');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('mobile-open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = overlay?.getAttribute('aria-hidden') === 'false';
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  // Close menu when clicking a nav link
+  overlay?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Search trigger
+  const searchBtn = document.querySelector('.search-trigger');
+  searchBtn?.addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('open-search'));
+  });
+</script>
