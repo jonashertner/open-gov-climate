@@ -17,10 +17,10 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Lang };
 
-const allFoia = await getCollection('foia');
-const entries = allFoia
-  .filter(f => f.data.lang === lang)
-  .sort((a, b) => a.data.dateSubmitted.getTime() - b.data.dateSubmitted.getTime());
+const allEvidence = await getCollection('evidence');
+const entries = allEvidence
+  .filter(e => e.data.lang === lang)
+  .sort((a, b) => a.data.dateSourced.getTime() - b.data.dateSourced.getTime());
 ---
 
 <Base title={t(lang, 'timeline.heading')} lang={lang}>

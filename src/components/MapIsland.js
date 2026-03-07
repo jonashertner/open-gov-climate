@@ -1,7 +1,7 @@
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-export function initMap(container, foiaData) {
+export function initMap(container, evidenceData) {
   const map = new maplibregl.Map({
     container,
     style: 'https://vectortiles.geo.admin.ch/styles/ch.swisstopo.basemap.vt/style.json',
@@ -13,15 +13,15 @@ export function initMap(container, foiaData) {
 
   const geojson = {
     type: 'FeatureCollection',
-    features: foiaData.map(f => ({
+    features: evidenceData.map(e => ({
       type: 'Feature',
-      geometry: { type: 'Point', coordinates: [f.lng, f.lat] },
-      properties: { title: f.title, status: f.status, category: f.category, url: f.url, slug: f.slug },
+      geometry: { type: 'Point', coordinates: [e.lng, e.lat] },
+      properties: { title: e.title, domain: e.domain, sourceType: e.sourceType, url: e.url, slug: e.slug },
     })),
   };
 
   map.on('load', () => {
-    map.addSource('foia', {
+    map.addSource('evidence', {
       type: 'geojson',
       data: geojson,
       cluster: true,
@@ -32,7 +32,7 @@ export function initMap(container, foiaData) {
     map.addLayer({
       id: 'clusters',
       type: 'circle',
-      source: 'foia',
+      source: 'evidence',
       filter: ['has', 'point_count'],
       paint: {
         'circle-color': '#0a0a0a',
@@ -43,7 +43,7 @@ export function initMap(container, foiaData) {
     map.addLayer({
       id: 'cluster-count',
       type: 'symbol',
-      source: 'foia',
+      source: 'evidence',
       filter: ['has', 'point_count'],
       layout: {
         'text-field': '{point_count_abbreviated}',
@@ -55,10 +55,17 @@ export function initMap(container, foiaData) {
     map.addLayer({
       id: 'points',
       type: 'circle',
-      source: 'foia',
+      source: 'evidence',
       filter: ['!', ['has', 'point_count']],
       paint: {
-        'circle-color': '#0a0a0a',
+        'circle-color': [
+          'match', ['get', 'domain'],
+          'soil', '#8B6914',
+          'air', '#4A90D9',
+          'forest', '#2D7D46',
+          'water', '#1B6B93',
+          '#0a0a0a'
+        ],
         'circle-radius': 7,
         'circle-stroke-width': 2,
         'circle-stroke-color': '#ffffff',
@@ -67,16 +74,17 @@ export function initMap(container, foiaData) {
 
     map.on('click', 'points', (e) => {
       const props = e.features[0].properties;
+      const domainLabel = props.domain.charAt(0).toUpperCase() + props.domain.slice(1);
       new maplibregl.Popup({ offset: 12, closeButton: false })
         .setLngLat(e.lngLat)
-        .setHTML(`<div style="font-family:Inter,sans-serif;font-size:14px;"><strong>${escapeHtml(props.title)}</strong><br/><a href="${escapeHtml(props.url)}" style="color:#0a0a0a;text-decoration:underline;">View details</a></div>`)
+        .setHTML(`<div style="font-family:Inter,sans-serif;font-size:14px;"><span style="font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#666;">${escapeHtml(domainLabel)}</span><br/><strong>${escapeHtml(props.title)}</strong><br/><a href="${escapeHtml(props.url)}" style="color:#0a0a0a;text-decoration:underline;">View details</a></div>`)
         .addTo(map);
     });
 
     map.on('click', 'clusters', (e) => {
       const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
       const clusterId = features[0].properties.cluster_id;
-      map.getSource('foia').getClusterExpansionZoom(clusterId, (err, zoom) => {
+      map.getSource('evidence').getClusterExpansionZoom(clusterId, (err, zoom) => {
         if (err) return;
         map.easeTo({ center: features[0].geometry.coordinates, zoom });
       });

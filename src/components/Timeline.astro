@@ -4,19 +4,25 @@ import { t, type Lang } from '../i18n/utils';
 interface Props { entries: any[]; lang: Lang; }
 const { entries, lang } = Astro.props;
 
-function getStatusColor(status: string) {
-  return status === 'responded' || status === 'published' ? 'var(--status-green)' : 'var(--status-amber)';
+function getDomainColor(domain: string) {
+  const colors: Record<string, string> = {
+    soil: 'var(--domain-soil)',
+    air: 'var(--domain-air)',
+    forest: 'var(--domain-forest)',
+    water: 'var(--domain-water)',
+  };
+  return colors[domain] || 'var(--border)';
 }
 ---
 
 <div class="timeline">
   {entries.map(entry => (
     <div class="timeline__entry">
-      <div class="timeline__dot" style={`background-color: ${getStatusColor(entry.data.status)}`}></div>
-      <time class="mono timeline__date" datetime={entry.data.dateSubmitted.toISOString().split('T')[0]}>
-        {entry.data.dateSubmitted.toISOString().split('T')[0]}
+      <div class="timeline__dot" style={`background-color: ${getDomainColor(entry.data.domain)}`}></div>
+      <time class="mono timeline__date" datetime={entry.data.dateSourced.toISOString().split('T')[0]}>
+        {entry.data.dateSourced.toISOString().split('T')[0]}
       </time>
-      <h3><a href={`/${lang}/foia/${entry.data.slug}/`}>{entry.data.title}</a></h3>
+      <h3><a href={`/${lang}/evidence/${entry.data.slug}/`}>{entry.data.title}</a></h3>
       <p class="timeline__summary">{entry.data.summary}</p>
     </div>
   ))}
