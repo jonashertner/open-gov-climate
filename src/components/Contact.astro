@@ -1,0 +1,22 @@
+---
+import { t, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+---
+
+<section id="contact" class="section">
+  <div class="container prose">
+    <p class="label">{t(lang, 'contact.label')}</p>
+    <h2>{t(lang, 'contact.heading')}</h2>
+    <p class="contact__description">{t(lang, 'contact.description')}</p>
+    <a href="mailto:opengovclimate@pm.me" class="contact__email">opengovclimate@pm.me</a>
+    <p class="contact__note mono">{t(lang, 'contact.encrypted')}</p>
+  </div>
+</section>
+
+<style>
+  .contact__description { margin-top: var(--space-4); color: var(--muted); }
+  .contact__email { display: inline-block; margin-top: var(--space-6); font-size: var(--text-lg); font-weight: 500; }
+  .contact__note { margin-top: var(--space-2); color: var(--muted); font-size: var(--text-xs); }
+</style>
