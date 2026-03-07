@@ -54,6 +54,12 @@
   --status-green: #1a7a3a;
   --status-amber: #b45309;
   --status-red: #b91c1c;
+
+  /* Domain colors */
+  --domain-soil: #8B6914;
+  --domain-air: #4A90D9;
+  --domain-forest: #2D7D46;
+  --domain-water: #1B6B93;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -66,6 +72,12 @@
     --status-green: #34d058;
     --status-amber: #f59e0b;
     --status-red: #f87171;
+
+    /* Domain colors */
+    --domain-soil: #C49B2A;
+    --domain-air: #6BB3F0;
+    --domain-forest: #4CAF6E;
+    --domain-water: #3BA4D4;
   }
 }
 
@@ -78,4 +90,10 @@
   --status-green: #34d058;
   --status-amber: #f59e0b;
   --status-red: #f87171;
+
+  /* Domain colors */
+  --domain-soil: #C49B2A;
+  --domain-air: #6BB3F0;
+  --domain-forest: #4CAF6E;
+  --domain-water: #3BA4D4;
 }

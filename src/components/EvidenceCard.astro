@@ -1,0 +1,80 @@
+---
+import { t, type Lang } from '../i18n/utils';
+
+interface Props { entry: any; lang: Lang; }
+const { entry, lang } = Astro.props;
+const { slug, title, summary, domain, sourceType, dateSourced, canton } = entry.data;
+
+const domainColors: Record<string, string> = {
+  soil: 'var(--domain-soil)',
+  air: 'var(--domain-air)',
+  forest: 'var(--domain-forest)',
+  water: 'var(--domain-water)',
+};
+---
+
+<article class="card">
+  <div class="card__tags">
+    <span class="badge" style={`background: ${domainColors[domain]}; color: #fff;`}>
+      {t(lang, `evidence.domain.${domain}` as any)}
+    </span>
+    <span class="badge badge--outline">
+      {t(lang, `evidence.sourceType.${sourceType}` as any)}
+    </span>
+  </div>
+  <h3><a href={`/${lang}/evidence/${slug}/`}>{title}</a></h3>
+  <p class="card__summary">{summary}</p>
+  <div class="card__footer">
+    <div class="card__meta">
+      <span class="mono">{canton}</span>
+      <time class="mono" datetime={dateSourced.toISOString().split('T')[0]}>
+        {dateSourced.toISOString().split('T')[0]}
+      </time>
+    </div>
+    <a href={`/${lang}/evidence/${slug}/`} class="card__link">
+      {t(lang, 'evidence.readMore')}
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  .card__tags {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+  .badge--outline {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .card h3 { margin-top: var(--space-3); }
+  .card h3 a { text-decoration: none; }
+  .card__summary {
+    margin-top: var(--space-3);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+  .card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-4);
+  }
+  .card__meta {
+    display: flex;
+    gap: var(--space-3);
+    color: var(--muted);
+    font-size: var(--text-xs);
+  }
+  .card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+  }
+</style>
