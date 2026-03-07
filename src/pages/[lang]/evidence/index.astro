@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import EvidenceCard from '../../../components/EvidenceCard.astro';
+import { t, type Lang } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'it' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const allEvidence = await getCollection('evidence');
+const entries = allEvidence
+  .filter(e => e.data.lang === lang)
+  .sort((a, b) => b.data.dateSourced.getTime() - a.data.dateSourced.getTime());
+
+const domains = ['soil', 'air', 'forest', 'water'];
+const sourceTypes = [...new Set(entries.map(e => e.data.sourceType))];
+const cantons = [...new Set(entries.map(e => e.data.canton))].sort();
+---
+
+<Base title={t(lang, 'evidence.label')} description={t(lang, 'evidence.heading')} lang={lang}>
+  <Header slot="header" />
+
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <p class="label">{t(lang, 'evidence.label')}</p>
+        <h1>{t(lang, 'evidence.heading')}</h1>
+      </div>
+
+      <div class="filter-bar" id="filter-bar">
+        <select id="filter-domain" aria-label={t(lang, 'evidence.filterDomain')}>
+          <option value="">{t(lang, 'evidence.allDomains')}</option>
+          {domains.map(d => (
+            <option value={d}>{t(lang, `evidence.domain.${d}` as any)}</option>
+          ))}
+        </select>
+        <select id="filter-source" aria-label={t(lang, 'evidence.filterSource')}>
+          <option value="">{t(lang, 'evidence.allSources')}</option>
+          {sourceTypes.map(s => (
+            <option value={s}>{t(lang, `evidence.sourceType.${s}` as any)}</option>
+          ))}
+        </select>
+        <select id="filter-canton" aria-label={t(lang, 'evidence.filterCanton')}>
+          <option value="">{t(lang, 'evidence.allCantons')}</option>
+          {cantons.map(c => (
+            <option value={c}>{c}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="grid-2" id="evidence-grid">
+        {entries.map(entry => (
+          <div class="evidence-item" data-domain={entry.data.domain} data-source={entry.data.sourceType} data-canton={entry.data.canton}>
+            <EvidenceCard entry={entry} lang={lang} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .section__header { margin-bottom: var(--space-12); }
+  .section__header h1 { margin-top: var(--space-3); }
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+  }
+  .filter-bar select {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 48px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const grid = document.getElementById('evidence-grid');
+  const items = grid?.querySelectorAll('.evidence-item') ?? [];
+  const domainFilter = document.getElementById('filter-domain') as HTMLSelectElement;
+  const sourceFilter = document.getElementById('filter-source') as HTMLSelectElement;
+  const cantonFilter = document.getElementById('filter-canton') as HTMLSelectElement;
+
+  function applyFilters() {
+    const domain = domainFilter?.value || '';
+    const source = sourceFilter?.value || '';
+    const canton = cantonFilter?.value || '';
+
+    items.forEach((item) => {
+      const el = item as HTMLElement;
+      const matchDomain = !domain || el.dataset.domain === domain;
+      const matchSource = !source || el.dataset.source === source;
+      const matchCanton = !canton || el.dataset.canton === canton;
+      el.style.display = matchDomain && matchSource && matchCanton ? '' : 'none';
+    });
+  }
+
+  domainFilter?.addEventListener('change', applyFilters);
+  sourceFilter?.addEventListener('change', applyFilters);
+  cantonFilter?.addEventListener('change', applyFilters);
+</script>
