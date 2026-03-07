@@ -227,6 +227,7 @@ const navLinks = [
     gap: var(--space-8);
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition:
       opacity var(--duration-normal) var(--ease),
       visibility var(--duration-normal) var(--ease);
@@ -235,6 +236,7 @@ const navLinks = [
   .mobile-overlay[aria-hidden="false"] {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 
   @media (min-width: 1024px) {
