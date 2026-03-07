@@ -214,10 +214,18 @@ const navLinks = [
     display: block;
   }
 
+  /* When mobile menu is open, make header fully opaque */
+  :global(.mobile-open) .site-header {
+    background: var(--paper);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   /* Mobile overlay */
   .mobile-overlay {
     position: fixed;
-    inset: 64px 0 0 0;
+    inset: 0;
+    padding-top: 64px;
     background: var(--paper);
     z-index: 99;
     display: flex;
