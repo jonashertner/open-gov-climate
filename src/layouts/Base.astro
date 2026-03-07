@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Search from '../components/Search.tsx';
+import { t, type Lang } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -9,6 +11,7 @@ interface Props {
 }
 
 const { title, description = 'Swiss transparency initiative for alpine climate intervention projects.', lang = 'en', ogImage } = Astro.props;
+const typedLang = lang as Lang;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const supportedLangs = ['en', 'de', 'fr', 'it'];
 ---
@@ -57,5 +60,6 @@ const supportedLangs = ['en', 'de', 'fr', 'it'];
     <slot />
   </main>
   <slot name="footer" />
+  <Search client:idle placeholder={t(typedLang, 'search.placeholder')} noResults={t(typedLang, 'search.noResults')} resultsLabel={t(typedLang, 'search.results')} />
 </body>
 </html>

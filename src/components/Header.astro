@@ -314,4 +314,10 @@ const navLinks = [
   overlay?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeMenu);
   });
+
+  // Search trigger
+  const searchBtn = document.querySelector('.search-trigger');
+  searchBtn?.addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('open-search'));
+  });
 </script>
