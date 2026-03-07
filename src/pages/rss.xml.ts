@@ -2,18 +2,18 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async () => {
-  const foia = await getCollection('foia');
+  const evidence = await getCollection('evidence');
   const articles = await getCollection('articles');
 
-  const enFoia = foia.filter(f => f.data.lang === 'en');
+  const enEvidence = evidence.filter(e => e.data.lang === 'en');
   const enArticles = articles.filter(a => a.data.lang === 'en');
 
   const items = [
-    ...enFoia.map(f => ({
-      title: f.data.title,
-      link: `https://opengovclimate.ch/en/foia/${f.data.slug}/`,
-      description: f.data.summary,
-      pubDate: f.data.dateSubmitted,
+    ...enEvidence.map(e => ({
+      title: e.data.title,
+      link: `https://opengovclimate.ch/en/evidence/${e.data.slug}/`,
+      description: e.data.summary,
+      pubDate: e.data.dateSourced,
     })),
     ...enArticles.map(a => ({
       title: a.data.title,
@@ -28,7 +28,7 @@ export const GET: APIRoute = async () => {
   <channel>
     <title>Open Gov Climate</title>
     <link>https://opengovclimate.ch</link>
-    <description>Swiss transparency initiative for alpine climate intervention projects.</description>
+    <description>Litigation-grade environmental evidence for Swiss climate accountability.</description>
     <language>en</language>
     <atom:link href="https://opengovclimate.ch/rss.xml" rel="self" type="application/rss+xml"/>
 ${items.map(item => `    <item>

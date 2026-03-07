@@ -3,23 +3,21 @@ import { t, type Lang, type TranslationKey } from '../i18n/utils';
 
 interface Props {
   status: string;
-  dateSubmitted: Date;
-  dateAcknowledged?: Date;
-  dateResponded?: Date;
+  dateSourced: Date;
+  dateVerified?: Date;
   datePublished?: Date;
   lang: Lang;
 }
 
-const { status, dateSubmitted, dateAcknowledged, dateResponded, datePublished, lang } = Astro.props;
+const { status, dateSourced, dateVerified, datePublished, lang } = Astro.props;
 
 const steps = [
-  { key: 'foia.status.submitted' as TranslationKey, date: dateSubmitted, id: 'submitted' },
-  { key: 'foia.status.acknowledged' as TranslationKey, date: dateAcknowledged, id: 'acknowledged' },
-  { key: 'foia.status.responded' as TranslationKey, date: dateResponded, id: 'responded' },
-  { key: 'foia.status.published' as TranslationKey, date: datePublished, id: 'published' },
+  { key: 'evidence.status.sourced' as TranslationKey, date: dateSourced, id: 'sourced' },
+  { key: 'evidence.status.verified' as TranslationKey, date: dateVerified, id: 'verified' },
+  { key: 'evidence.status.published' as TranslationKey, date: datePublished, id: 'published' },
 ];
 
-const statusOrder = ['submitted', 'acknowledged', 'responded', 'published'];
+const statusOrder = ['sourced', 'verified', 'published'];
 const currentIndex = statusOrder.indexOf(status);
 
 function getStepState(index: number): 'completed' | 'current' | 'future' {
