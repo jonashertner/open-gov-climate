@@ -94,3 +94,13 @@ const articleEntries = allArticles
   .section__subheading { margin-top: var(--space-3); color: var(--muted); }
   .map-container { width: 100%; height: 70vh; min-height: 400px; }
 </style>
+
+<script>
+  const mapRoot = document.getElementById('map-root');
+  if (mapRoot) {
+    import('../../components/MapIsland.js').then(({ initMap }) => {
+      const data = JSON.parse(mapRoot.dataset.foia || '[]');
+      initMap(mapRoot, data);
+    });
+  }
+</script>
