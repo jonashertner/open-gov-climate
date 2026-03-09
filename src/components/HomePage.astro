@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Hero from './Hero.astro';
+import EvidenceCard from './EvidenceCard.astro';
+import ArticleCard from './ArticleCard.astro';
+import Contact from './Contact.astro';
+import { t, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props as Props;
+
+const allEvidence = await getCollection('evidence');
+const evidenceEntries = allEvidence
+  .filter((e) => e.data.lang === lang)
+  .sort((a, b) => b.data.dateSourced.getTime() - a.data.dateSourced.getTime());
+
+const allArticles = await getCollection('articles');
+const articleEntries = allArticles
+  .filter((a) => a.data.lang === lang)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Base title={t(lang, 'site.title')} description={t(lang, 'site.description')} lang={lang}>
+  <Header slot="header" />
+
+  <Hero lang={lang} />
+
+  <section id="evidence" class="section">
+    <div class="container">
+      <div class="section__header">
+        <p class="label">{t(lang, 'evidence.label')}</p>
+        <h2>{t(lang, 'evidence.heading')}</h2>
+      </div>
+      <div class="grid-2">
+        {evidenceEntries.map((entry) => (
+          <EvidenceCard entry={entry} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="map" class="section map-section">
+    <div class="container">
+      <div class="section__header">
+        <p class="label">{t(lang, 'map.label')}</p>
+        <h2>{t(lang, 'map.heading')}</h2>
+      </div>
+    </div>
+    <div
+      class="map-container"
+      id="map-root"
+      data-evidence={JSON.stringify(
+        evidenceEntries.map((e) => ({
+          slug: e.data.slug,
+          title: e.data.title,
+          lat: e.data.coordinates.lat,
+          lng: e.data.coordinates.lng,
+          domain: e.data.domain,
+          sourceType: e.data.sourceType,
+          url: `/${lang}/evidence/${e.data.slug}/`,
+        })),
+      )}
+    ></div>
+  </section>
+
+  <section id="articles" class="section">
+    <div class="container">
+      <div class="section__header">
+        <p class="label">{t(lang, 'articles.label')}</p>
+        <h2>{t(lang, 'articles.heading')}</h2>
+        <p class="section__subheading">{t(lang, 'articles.subheading')}</p>
+      </div>
+      <div class="grid-2">
+        {articleEntries.map((entry) => (
+          <ArticleCard entry={entry} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Contact lang={lang} />
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .section__header {
+    margin-bottom: var(--space-12);
+  }
+
+  .section__header h2 {
+    margin-top: var(--space-3);
+  }
+
+  .section__subheading {
+    margin-top: var(--space-3);
+    color: var(--muted);
+  }
+
+  .map-container {
+    width: 100%;
+    height: 70vh;
+    min-height: 400px;
+  }
+</style>
+
+<script>
+  const mapRoot = document.getElementById('map-root');
+  if (mapRoot) {
+    import('./MapIsland.js').then(({ initMap }) => {
+      const data = JSON.parse(mapRoot.dataset.evidence || '[]');
+      initMap(mapRoot, data);
+    });
+  }
+</script>
