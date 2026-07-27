@@ -1,0 +1,5 @@
+# Not public yet. Nothing on this site should be indexed.
+# Remove this file (and the noindex meta in src/layouts/Base.astro) when the
+# site is ready to be found.
+User-agent: *
+Disallow: /

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Search from '../components/Search.tsx';
+import PasswordGate from '../components/PasswordGate.astro';
 import { t, type Lang } from '../i18n/utils';
 
 interface Props {
@@ -10,6 +11,15 @@ interface Props {
   ogImage?: string;
 }
 
+// NOTE: never place a comment or any markup before <!DOCTYPE html> or between
+// it and <html>. The Astro compiler then drops the <html> element from the
+// output, which silently breaks Pagefind ("pages found without an <html>
+// element") and leaves the build with an empty search index.
+//
+// <html> carries class="gate-locked" in the static markup; PasswordGate's
+// inline head script removes it once a valid unlock is stored. Locking in the
+// markup and unlocking in JS means the gate fails closed for no-JS visitors and
+// shows no flash of content before hydration.
 const { title, description = 'Swiss transparency initiative for alpine climate intervention projects.', lang = 'en', ogImage } = Astro.props;
 const typedLang = lang as Lang;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -17,12 +27,15 @@ const supportedLangs = ['en', 'de', 'fr', 'it'];
 ---
 
 <!DOCTYPE html>
-<html lang={lang}>
+<html lang={lang} class="gate-locked">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title} — Open Gov Climate</title>
   <meta name="description" content={description} />
+  {/* Not public yet. This, with /robots.txt, is what actually keeps the site
+      out of view — the access gate below is only a speed bump. */}
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href={canonicalURL} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -54,6 +67,7 @@ const supportedLangs = ['en', 'de', 'fr', 'it'];
   </script>
 </head>
 <body>
+  <PasswordGate />
   <a class="skip-link" href="#main-content">Skip to content</a>
   <slot name="header" />
   <main id="main-content" data-pagefind-body>
