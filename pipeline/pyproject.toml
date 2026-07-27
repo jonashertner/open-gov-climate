@@ -1,0 +1,41 @@
+[project]
+name = "opengovclimate-pipeline"
+version = "0.1.0"
+description = "Swiss climate-compliance engine: predicate evaluation and the Befund refusal gate"
+readme = "README.md"
+requires-python = ">=3.14"
+license = { text = "MIT" }
+authors = [{ name = "Jonas Hertner", email = "jonashertner@protonmail.ch" }]
+
+# Deliberately no runtime dependencies. The evaluator and the gate are pure stdlib,
+# so they can be audited, vendored, or ported without pulling in a supply chain.
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "ruff>=0.7.0",
+    "pyright>=1.1.380",
+]
+
+[build-system]
+requires = ["setuptools>=68.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["compliance*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+
+[tool.pyright]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"
+include = ["compliance", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
