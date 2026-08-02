@@ -57,6 +57,18 @@ const supportedLangs = ['en', 'de', 'fr', 'it'];
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
 
+  {/* The lock lives here, inline and render-blocking, NOT in the bundled
+      stylesheet. A gate that depends on a second network request is not a gate:
+      if /_astro/*.css is slow, stale or missing, an external rule would leave
+      the whole site visible. These four declarations are the entire lock; the
+      gate's cosmetic styling stays in PasswordGate.astro where it belongs. */}
+  <style is:inline>
+    html.gate-locked { overflow: hidden; }
+    html.gate-locked body > *:not(#gate) { display: none !important; }
+    #gate { display: none; }
+    html.gate-locked #gate { display: flex; }
+  </style>
+
   <script is:inline>
     (function() {
       var theme = localStorage.getItem('theme');
