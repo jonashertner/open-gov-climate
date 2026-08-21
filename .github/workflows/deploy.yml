@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Riverflow refreshes its federal datasets early on Monday. Rebuild the host
+  # afterwards so /riverflow follows the verified publication automatically.
+  schedule:
+    - cron: '0 7 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -10,14 +14,44 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Open Gov Climate
         uses: actions/checkout@v5
-      - name: Install, build, and upload
-        uses: withastro/action@v5
+      - name: Checkout Riverflow
+        uses: actions/checkout@v5
+        with:
+          repository: jonashertner/riverflow-ch
+          ref: main
+          path: .riverflow
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Build Open Gov Climate
+        run: |
+          npm ci
+          npm run build
+      - name: Verify and add Riverflow
+        run: |
+          node .riverflow/scripts/verify-site.mjs
+          mkdir -p dist/riverflow
+          cp -R .riverflow/site/. dist/riverflow/
+          test -f dist/riverflow/index.html
+          test -f dist/riverflow/data/provenance.json
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload the complete site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
     needs: build
