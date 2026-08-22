@@ -48,9 +48,8 @@ export default function Search({ placeholder, noResults, resultsLabel }: Props) 
     if (open) {
       inputRef.current?.focus();
       if (!pagefindRef.current) {
-        const path = '/pagefind/pagefind.js';
-        // @ts-ignore – dynamic path prevents Vite from bundling
-        import(/* @vite-ignore */ path).then(pf => {
+        // Pagefind is emitted after Astro's bundle, so this stays a runtime import.
+        import(/* @vite-ignore */ '/pagefind/pagefind.js').then(pf => {
           pagefindRef.current = pf;
         }).catch(() => {});
       }

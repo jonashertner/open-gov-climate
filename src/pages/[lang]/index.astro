@@ -1,6 +1,7 @@
 ---
-import HomePage from '../../components/HomePage.astro';
-import { type Lang } from '../../i18n/utils';
+import PrimaryLanding from '../../components/PrimaryLanding.astro';
+
+type LandingLang = 'de' | 'en' | 'fr' | 'it' | 'rm';
 
 export function getStaticPaths() {
   return [
@@ -8,10 +9,11 @@ export function getStaticPaths() {
     { params: { lang: 'de' } },
     { params: { lang: 'fr' } },
     { params: { lang: 'it' } },
+    { params: { lang: 'rm' } },
   ];
 }
 
-const { lang } = Astro.params as { lang: Lang };
+const { lang } = Astro.params as { lang: LandingLang };
 ---
 
-<HomePage lang={lang} />
+<PrimaryLanding lang={lang} />

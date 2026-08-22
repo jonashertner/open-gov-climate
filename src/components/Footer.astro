@@ -1,14 +1,17 @@
 ---
-import { getLangFromUrl, t, languages, type Lang } from '../i18n/utils';
+import { getLangFromUrl, t, type Lang } from '../i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
+interface Props { lang?: Lang; archived?: boolean; }
+const routeLang = getLangFromUrl(Astro.url);
+const { lang = routeLang, archived = false } = Astro.props as Props;
 const year = new Date().getFullYear();
+const homeHref = archived ? `/archive/${lang}/` : `/${lang}`;
 
 const footerLinks = [
-  { label: 'Home', href: `/${lang}` },
+  { label: 'Home', href: homeHref },
   { label: t(lang, 'nav.evidence'), href: `/${lang}/evidence` },
-  { label: t(lang, 'nav.articles'), href: `/${lang}/#articles` },
-  { label: t(lang, 'nav.contact'), href: `/${lang}/#contact` },
+  { label: t(lang, 'nav.articles'), href: archived ? `/archive/${lang}/#articles` : `/${lang}/#articles` },
+  { label: t(lang, 'nav.contact'), href: archived ? `/archive/${lang}/#contact` : `/${lang}/#contact` },
   { label: t(lang, 'footer.rss'), href: `/rss.xml` },
   { label: t(lang, 'footer.data'), href: `/data.json` },
 ];
