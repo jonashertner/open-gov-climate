@@ -1,6 +1,19 @@
-# The main Open Gov Climate site remains in preparation. Riverflow is public.
 User-agent: *
-Disallow: /
-Allow: /riverflow/
+Disallow: /archive/
+Disallow: /data.json
+Disallow: /rss.xml
+Disallow: /en/evidence/
+Disallow: /de/evidence/
+Disallow: /fr/evidence/
+Disallow: /it/evidence/
+Disallow: /en/articles/
+Disallow: /de/articles/
+Disallow: /fr/articles/
+Disallow: /it/articles/
+Disallow: /en/timeline/
+Disallow: /de/timeline/
+Disallow: /fr/timeline/
+Disallow: /it/timeline/
 
+Sitemap: https://opengovclimate.ch/sitemap.xml
 Sitemap: https://opengovclimate.ch/riverflow/sitemap.xml

@@ -2,21 +2,25 @@
 import { getLangFromUrl, t, languages, type Lang } from '../i18n/utils';
 import DarkModeToggle from './DarkModeToggle.astro';
 
-const lang = getLangFromUrl(Astro.url);
+interface Props { lang?: Lang; archived?: boolean; }
+const routeLang = getLangFromUrl(Astro.url);
+const { lang = routeLang, archived = false } = Astro.props as Props;
 const currentPath = Astro.url.pathname.replace(/^\/(en|de|fr|it)/, '') || '/';
+const homeHref = archived ? `/archive/${lang}/` : `/${lang}`;
+const languageHref = (code: string) => archived ? `/archive/${code}/` : `/${code}${currentPath}`;
 
 const navLinks = [
   { key: 'nav.evidence' as const, href: `/${lang}/evidence` },
-  { key: 'nav.map' as const, href: `/${lang}/#map` },
+  { key: 'nav.map' as const, href: archived ? `/archive/${lang}/#map` : `/${lang}/#map` },
   { key: 'nav.timeline' as const, href: `/${lang}/timeline` },
-  { key: 'nav.articles' as const, href: `/${lang}/#articles` },
-  { key: 'nav.contact' as const, href: `/${lang}/#contact` },
+  { key: 'nav.articles' as const, href: archived ? `/archive/${lang}/#articles` : `/${lang}/#articles` },
+  { key: 'nav.contact' as const, href: archived ? `/archive/${lang}/#contact` : `/${lang}/#contact` },
 ];
 ---
 
 <header class="site-header">
   <div class="header-inner">
-    <a href={`/${lang}`} class="logo">Open Gov Climate</a>
+    <a href={homeHref} class="logo">Open Gov Climate</a>
 
     <nav class="desktop-nav" aria-label="Main navigation">
       {navLinks.map(({ key, href }) => (
@@ -35,7 +39,7 @@ const navLinks = [
       <div class="lang-switcher" role="navigation" aria-label="Language">
         {Object.entries(languages).map(([code, label]) => (
           <a
-            href={`/${code}${currentPath}`}
+            href={languageHref(code)}
             class:list={['lang-link', { active: code === lang }]}
             aria-current={code === lang ? 'page' : undefined}
           >{label}</a>
@@ -67,7 +71,7 @@ const navLinks = [
     <div class="mobile-lang-switcher">
       {Object.entries(languages).map(([code, label]) => (
         <a
-          href={`/${code}${currentPath}`}
+          href={languageHref(code)}
           class:list={['lang-link', { active: code === lang }]}
           aria-current={code === lang ? 'page' : undefined}
         >{label}</a>

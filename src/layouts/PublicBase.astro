@@ -1,0 +1,46 @@
+---
+import '../styles/landing.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  skipLabel?: string;
+}
+
+const { title, description, lang = 'de', skipLabel = 'Skip to content' } = Astro.props;
+const canonicalPath = lang === 'de' ? '/' : Astro.url.pathname;
+const canonicalURL = new URL(canonicalPath, Astro.site);
+const preview = new URL('/riverflow-preview.jpg', Astro.site);
+const languagePaths = { de: '/', en: '/en/', fr: '/fr/', it: '/it/', rm: '/rm/' };
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={preview} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={preview} />
+    {Object.entries(languagePaths).map(([code, path]) => (
+      <link rel="alternate" hreflang={code} href={new URL(path, Astro.site)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+  </head>
+  <body>
+    <a class="landing-skip" href="#main">{skipLabel}</a>
+    <slot />
+  </body>
+</html>

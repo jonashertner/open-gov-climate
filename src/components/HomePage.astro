@@ -11,9 +11,16 @@ import { t, type Lang } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
+  archived?: boolean;
 }
 
-const { lang } = Astro.props as Props;
+const { lang, archived = false } = Astro.props as Props;
+const archiveText = {
+  en: 'Archived working concept. Open Gov Climate now focuses on Riverflow.',
+  de: 'Archiviertes Arbeitskonzept. Open Gov Climate konzentriert sich jetzt auf Riverflow.',
+  fr: 'Concept de travail archivé. Open Gov Climate se concentre désormais sur Riverflow.',
+  it: 'Progetto di lavoro archiviato. Open Gov Climate si concentra ora su Riverflow.',
+} as const;
 
 const allEvidence = await getCollection('evidence');
 const evidenceEntries = allEvidence
@@ -27,7 +34,13 @@ const articleEntries = allArticles
 ---
 
 <Base title={t(lang, 'site.title')} description={t(lang, 'site.description')} lang={lang}>
-  <Header slot="header" />
+  <Header slot="header" lang={lang} archived={archived} />
+
+  {archived && (
+    <aside class="archive-banner">
+      <p>{archiveText[lang]} <a href={lang === 'de' ? '/' : `/${lang}/`}>Riverflow →</a></p>
+    </aside>
+  )}
 
   <Hero lang={lang} />
 
@@ -86,13 +99,25 @@ const articleEntries = allArticles
 
   <Contact lang={lang} />
 
-  <Footer slot="footer" />
+  <Footer slot="footer" lang={lang} archived={archived} />
 </Base>
 
 <style>
   .section__header {
     margin-bottom: var(--space-12);
   }
+
+  .archive-banner {
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .archive-banner p {
+    max-width: var(--max-width); margin: 0 auto; padding: 12px var(--gutter);
+    color: var(--muted); font-size: var(--text-sm);
+  }
+
+  .archive-banner a { color: var(--ink); font-weight: 600; }
 
   .section__header h2 {
     margin-top: var(--space-3);

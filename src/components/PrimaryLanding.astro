@@ -1,0 +1,214 @@
+---
+import PublicBase from '../layouts/PublicBase.astro';
+
+type LandingLang = 'de' | 'en' | 'fr' | 'it' | 'rm';
+interface Props { lang?: LandingLang; }
+const { lang = 'de' } = Astro.props as Props;
+
+const copy = {
+  de: {
+    title: 'Open Gov Climate — Riverflow',
+    meta: 'Riverflow macht den Schweizer Wasserkreislauf, seine Daten und seinen rechtlichen Schutz sichtbar.',
+    skip: 'Zum Inhalt', home: 'Open Gov Climate, Startseite',
+    nav: ['Riverflow', 'Methode', 'Quellen', 'Mitwirken'],
+    eyebrow: 'Aktuelles Hauptprojekt', title1: 'Wasser verstehen.', title2: 'Lebensgrundlagen schützen.',
+    lead: 'Riverflow zeigt den Schweizer Wasserkreislauf – von Niederschlag, Schnee, Eis und Quellen über Flüsse, Seen, Grundwasser und Feuchtgebiete bis zur Nutzung. Messdaten, Herkunft und Rechtsgrundlagen bleiben prüfbar.',
+    open: 'Riverflow öffnen', understand: 'Projekt verstehen',
+    imageAlt: 'Riverflow: Karte des Schweizer Gewässernetzes mit Angaben zu Flüssen, Stauanlagen und Gletschern', live: 'Riverflow · Live',
+    goalLabel: 'Das Ziel', goalTitle: 'Der gesamte Wasserkreislauf, gemeinsam sichtbar.',
+    goalText: 'Die Karte verbindet heute Abfluss, Temperatur, Qualität, Speicher, Gletscher, Grundwasser, Feuchtgebiete und Wassernutzung. Fehlende Teile werden benannt – nicht kaschiert.',
+    cycle: ['Niederschlag', 'Schnee & Eis', 'Quellen & Grundwasser', 'Bäche & Flüsse', 'Seen & Feuchtgebiete', 'Nutzung & Rückfluss', 'Verdunstung'],
+    cycleNote: 'Einige Teile sind bereits kartiert; andere markieren die nächsten Datenergänzungen.',
+    mission: [
+      ['01', 'Verstehen', 'Messwerte, Inventare, Quellen und Alter werden gemeinsam lesbar.'],
+      ['02', 'Schützen', 'Lebenswichtige Wasserwege und Feuchtgebiete werden sichtbar und überprüfbar.'],
+      ['03', 'Durchsetzen', 'Rechtliche Pflichten werden an Daten geprüft – und Schutz nötigenfalls rechtlich eingefordert.'],
+    ],
+    collabLabel: 'Offen und kollaborativ', collabTitle: 'Dieses Projekt braucht Fachwissen.',
+    collabText: 'Wir laden Wissenschaft, Recht, Behörden, Zivilgesellschaft und lokale Fachpersonen ein. Gesucht sind Daten, Methodenprüfung, Rechtsanalyse und Code.',
+    contribute: 'Beitrag vorschlagen', github: 'Auf GitHub mitarbeiten',
+    archive: 'Open Gov Climate bündelt seine Arbeit vorerst in Riverflow. Das frühere Umwelt-Evidenzkonzept bleibt erhalten und wird später überarbeitet.',
+    archiveLink: 'Früheres Projekt · Archiv', footer: 'Offene Daten. Offene Methoden. Wirksamer Schutz.',
+  },
+  en: {
+    title: 'Open Gov Climate — Riverflow',
+    meta: 'Riverflow makes Switzerland’s water cycle, its evidence and its legal protection visible.',
+    skip: 'Skip to content', home: 'Open Gov Climate, home',
+    nav: ['Riverflow', 'Method', 'Sources', 'Contribute'],
+    eyebrow: 'Current primary project', title1: 'Understand water.', title2: 'Protect what sustains life.',
+    lead: 'Riverflow shows Switzerland’s water cycle – from precipitation, snow, ice and springs through rivers, lakes, groundwater and wetlands to use. Measurements, provenance and legal foundations remain open to scrutiny.',
+    open: 'Open Riverflow', understand: 'Understand the project',
+    imageAlt: 'Riverflow: map of Switzerland’s water network with rivers, dams and glaciers', live: 'Riverflow · Live',
+    goalLabel: 'The goal', goalTitle: 'The whole water cycle, visible together.',
+    goalText: 'The map now connects flow, temperature, quality, storage, glaciers, groundwater, wetlands and water use. Missing parts are named, not concealed.',
+    cycle: ['Precipitation', 'Snow & ice', 'Springs & groundwater', 'Streams & rivers', 'Lakes & wetlands', 'Use & return', 'Evaporation'],
+    cycleNote: 'Some stages are mapped now; others define the next data additions.',
+    mission: [
+      ['01', 'Understand', 'Measurements, inventories, sources and age become legible together.'],
+      ['02', 'Protect', 'Essential water pathways and wetlands become visible and verifiable.'],
+      ['03', 'Enforce', 'Legal duties are tested against evidence – and protection pursued through law where necessary.'],
+    ],
+    collabLabel: 'Open and collaborative', collabTitle: 'This project needs expertise.',
+    collabText: 'We invite scientists, legal professionals, public authorities, civil society and local experts. Contributions can include data, method review, legal analysis and code.',
+    contribute: 'Propose a contribution', github: 'Collaborate on GitHub',
+    archive: 'Open Gov Climate is focusing its work on Riverflow for now. The previous environmental-evidence concept is preserved for later revision.',
+    archiveLink: 'Previous project · Archive', footer: 'Open data. Open methods. Effective protection.',
+  },
+  fr: {
+    title: 'Open Gov Climate — Riverflow',
+    meta: 'Riverflow rend visibles le cycle de l’eau en Suisse, ses données et sa protection juridique.',
+    skip: 'Aller au contenu', home: 'Open Gov Climate, accueil',
+    nav: ['Riverflow', 'Méthode', 'Sources', 'Contribuer'],
+    eyebrow: 'Projet principal', title1: 'Comprendre l’eau.', title2: 'Protéger ce qui rend la vie possible.',
+    lead: 'Riverflow montre le cycle de l’eau en Suisse – des précipitations, de la neige, de la glace et des sources aux rivières, lacs, nappes souterraines, zones humides et usages. Mesures, provenance et bases légales restent vérifiables.',
+    open: 'Ouvrir Riverflow', understand: 'Comprendre le projet',
+    imageAlt: 'Riverflow : carte du réseau hydrographique suisse avec cours d’eau, barrages et glaciers', live: 'Riverflow · En direct',
+    goalLabel: 'L’objectif', goalTitle: 'Tout le cycle de l’eau, visible ensemble.',
+    goalText: 'La carte relie aujourd’hui débit, température, qualité, stockage, glaciers, eaux souterraines, zones humides et usages. Les lacunes sont nommées, pas dissimulées.',
+    cycle: ['Précipitations', 'Neige et glace', 'Sources et eaux souterraines', 'Ruisseaux et rivières', 'Lacs et zones humides', 'Usages et retours', 'Évaporation'],
+    cycleNote: 'Certaines étapes sont déjà cartographiées ; les autres indiquent les prochains ajouts de données.',
+    mission: [
+      ['01', 'Comprendre', 'Mesures, inventaires, sources et ancienneté deviennent lisibles ensemble.'],
+      ['02', 'Protéger', 'Les voies essentielles de l’eau et les zones humides deviennent visibles et vérifiables.'],
+      ['03', 'Faire appliquer', 'Les obligations légales sont confrontées aux données – et la protection défendue en justice si nécessaire.'],
+    ],
+    collabLabel: 'Ouvert et collaboratif', collabTitle: 'Ce projet a besoin de compétences.',
+    collabText: 'Nous invitons scientifiques, juristes, autorités, société civile et spécialistes locaux. Données, examen des méthodes, analyse juridique et code sont bienvenus.',
+    contribute: 'Proposer une contribution', github: 'Collaborer sur GitHub',
+    archive: 'Open Gov Climate concentre pour l’instant son travail sur Riverflow. L’ancien concept de preuves environnementales est conservé pour être révisé plus tard.',
+    archiveLink: 'Projet précédent · Archives', footer: 'Données ouvertes. Méthodes ouvertes. Protection effective.',
+  },
+  it: {
+    title: 'Open Gov Climate — Riverflow',
+    meta: 'Riverflow rende visibili il ciclo dell’acqua in Svizzera, i suoi dati e la sua protezione giuridica.',
+    skip: 'Vai al contenuto', home: 'Open Gov Climate, pagina iniziale',
+    nav: ['Riverflow', 'Metodo', 'Fonti', 'Contribuire'],
+    eyebrow: 'Progetto principale', title1: 'Capire l’acqua.', title2: 'Proteggere ciò che sostiene la vita.',
+    lead: 'Riverflow mostra il ciclo dell’acqua in Svizzera – da precipitazioni, neve, ghiaccio e sorgenti a fiumi, laghi, acque sotterranee, zone umide e usi. Misure, provenienza e basi legali restano verificabili.',
+    open: 'Apri Riverflow', understand: 'Capire il progetto',
+    imageAlt: 'Riverflow: carta della rete idrica svizzera con corsi d’acqua, dighe e ghiacciai', live: 'Riverflow · Live',
+    goalLabel: 'L’obiettivo', goalTitle: 'L’intero ciclo dell’acqua, visibile insieme.',
+    goalText: 'La carta collega oggi portata, temperatura, qualità, accumulo, ghiacciai, acque sotterranee, zone umide e usi. Le parti mancanti sono dichiarate, non nascoste.',
+    cycle: ['Precipitazioni', 'Neve e ghiaccio', 'Sorgenti e acque sotterranee', 'Ruscelli e fiumi', 'Laghi e zone umide', 'Usi e restituzione', 'Evaporazione'],
+    cycleNote: 'Alcune fasi sono già cartografate; le altre indicano i prossimi dati da integrare.',
+    mission: [
+      ['01', 'Capire', 'Misure, inventari, fonti ed età diventano leggibili insieme.'],
+      ['02', 'Proteggere', 'Le vie essenziali dell’acqua e le zone umide diventano visibili e verificabili.'],
+      ['03', 'Far rispettare', 'Gli obblighi legali sono confrontati con i dati – e la protezione perseguita per via legale se necessario.'],
+    ],
+    collabLabel: 'Aperto e collaborativo', collabTitle: 'Questo progetto ha bisogno di competenze.',
+    collabText: 'Invitiamo scienza, professionisti del diritto, autorità, società civile ed esperti locali. Sono benvenuti dati, revisione dei metodi, analisi giuridica e codice.',
+    contribute: 'Proponi un contributo', github: 'Collabora su GitHub',
+    archive: 'Open Gov Climate concentra per ora il lavoro su Riverflow. Il precedente progetto sulle prove ambientali resta conservato per una revisione futura.',
+    archiveLink: 'Progetto precedente · Archivio', footer: 'Dati aperti. Metodi aperti. Protezione efficace.',
+  },
+  rm: {
+    title: 'Open Gov Climate — Riverflow',
+    meta: 'Riverflow renda visibel il circul da l’aua en Svizra, sias datas e sia protecziun giuridica.',
+    skip: 'Tar il cuntegnair', home: 'Open Gov Climate, pagina iniziala',
+    nav: ['Riverflow', 'Metoda', 'Funtaunas', 'Contribuir'],
+    eyebrow: 'Project principal', title1: 'Chapir l’aua.', title2: 'Proteger la basa da viver.',
+    lead: 'Riverflow suonda il circul da l’aua tras la Svizra – da la precipitaziun, la naiv, il glatsch e las funtaunas fin als flums, lais, auas sutterranas, territoris umids e l’utilisaziun. Mesiraziuns, derivanza e basas giuridicas restan controllablas.',
+    open: 'Avrir Riverflow', understand: 'Chapir il project',
+    imageAlt: 'Riverflow: charta da la rait d’auas svizra cun flums, serras e glatschers', live: 'Riverflow · Live',
+    goalLabel: 'La finamira', goalTitle: 'L’entir circul da l’aua, visibel ensemen.',
+    goalText: 'La charta collia oz quantitad d’aua, temperatura, qualitad, accumulaziun, glatschers, aua sutterrana, territoris umids ed utilisaziun. Quai che manca vegn numnà, betg zuppentà.',
+    cycle: ['Precipitaziun', 'Naiv e glatsch', 'Funtaunas ed aua sutterrana', 'Auals e flums', 'Lais e territoris umids', 'Utilisaziun e return', 'Evapuraziun'],
+    cycleNote: 'Intginas parts èn gia cartadas; las autras mussan las proximas cumplettaziuns da datas.',
+    mission: [
+      ['01', 'Chapir', 'Mesiraziuns, inventaris, funtaunas e vegliadetgna vegnan legibels ensemen.'],
+      ['02', 'Proteger', 'Ils curs d’aua essenzials ed ils territoris umids vegnan visibels e controllabels.'],
+      ['03', 'Far valair', 'Obligaziuns giuridicas vegnan cumparegliadas cun datas – e la protecziun vegn pretendida legalmain sche necessari.'],
+    ],
+    collabLabel: 'Avert e collaborativ', collabTitle: 'Quest project dovra savida speziala.',
+    collabText: 'Nus envidain la scienza, il dretg, las autoritads, la societad civila e persunas spezialisadas localas. Datas, examinaziun da metodas, analisa giuridica e code èn bainvegnids.',
+    contribute: 'Proponer ina contribuziun', github: 'Collavurar sin GitHub',
+    archive: 'Open Gov Climate concentrescha per il mument sia lavur sin Riverflow. Il project precedent davart evidenzas ecologicas resta conservà per ina revisiun pli tard.',
+    archiveLink: 'Project precedent · Archiv', footer: 'Datas avertas. Metodas avertas. Protecziun efficazia.',
+  },
+} as const;
+
+const c = copy[lang];
+const languagePaths: Record<LandingLang, string> = { de: '/', en: '/en/', fr: '/fr/', it: '/it/', rm: '/rm/' };
+const archivePath = lang === 'rm' ? '/archive/' : `/archive/${lang}/`;
+const riverPath = lang === 'de' ? '/riverflow/' : `/riverflow/${lang}/`;
+const riverDoc = (file: string) => `${riverPath}${file}`;
+---
+
+<PublicBase title={c.title} description={c.meta} lang={lang} skipLabel={c.skip}>
+  <header class="landing-head">
+    <a class="landing-brand" href={languagePaths[lang]} aria-label={c.home}>
+      <span class="landing-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Open Gov Climate</span>
+    </a>
+    <nav class="landing-nav" aria-label="Riverflow">
+      <a aria-current="page" href={riverPath}>{c.nav[0]}</a>
+      <a href={riverDoc('method.html')}>{c.nav[1]}</a>
+      <a href={riverDoc('sources.html')}>{c.nav[2]}</a>
+      <a href={riverDoc('about.html#collaborate')}>{c.nav[3]}</a>
+    </nav>
+    <nav class="landing-langs" aria-label="Language">
+      {(Object.entries(languagePaths) as [LandingLang, string][]).map(([code, href]) => (
+        code === lang
+          ? <span aria-current="page">{code.toUpperCase()}</span>
+          : <a href={href} hreflang={code} lang={code}>{code.toUpperCase()}</a>
+      ))}
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="landing-hero" aria-labelledby="landing-title">
+      <div class="hero-copy">
+        <p class="eyebrow">{c.eyebrow}</p>
+        <h1 id="landing-title">{c.title1}<br />{c.title2}</h1>
+        <p class="hero-lead">{c.lead}</p>
+        <div class="hero-actions">
+          <a class="primary-action" href={riverPath}>{c.open} <span aria-hidden="true">→</span></a>
+          <a class="text-action" href={riverDoc('about.html')}>{c.understand}</a>
+        </div>
+      </div>
+      <a class="project-visual" href={riverPath} aria-label={c.open} data-live={c.live}>
+        <img src="/riverflow-preview.jpg" width="1200" height="630" alt={c.imageAlt} />
+      </a>
+    </section>
+
+    <section class="cycle-section" aria-labelledby="cycle-title">
+      <div class="section-intro">
+        <p class="eyebrow">{c.goalLabel}</p>
+        <h2 id="cycle-title">{c.goalTitle}</h2>
+        <p>{c.goalText}</p>
+      </div>
+      <ol class="cycle-path">
+        {c.cycle.map((stage, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{stage}</li>)}
+      </ol>
+      <p class="cycle-note">{c.cycleNote}</p>
+    </section>
+
+    <section class="mission-section" aria-label={c.goalLabel}>
+      {c.mission.map(([number, heading, text]) => (
+        <article class="mission-item">
+          <span>{number}</span><h2>{heading}</h2><p>{text}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="collab-section" aria-labelledby="collab-title">
+      <div>
+        <p class="eyebrow">{c.collabLabel}</p>
+        <h2 id="collab-title">{c.collabTitle}</h2>
+      </div>
+      <div class="collab-copy">
+        <p>{c.collabText}</p>
+        <div class="hero-actions">
+          <a class="primary-action" href={riverDoc('about.html#collaborate')}>{c.contribute} <span aria-hidden="true">→</span></a>
+          <a class="text-action" href="https://github.com/jonashertner/riverflow-ch">{c.github}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="landing-footer">
+    <div><b>Open Gov Climate</b><p>{c.footer}</p></div>
+    <div class="archive-note"><p>{c.archive}</p><a href={archivePath}>{c.archiveLink}</a></div>
+  </footer>
+</PublicBase>
